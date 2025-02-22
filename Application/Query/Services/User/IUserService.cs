@@ -10,7 +10,7 @@ namespace Application.Command.Services.User
 {
     public interface IUserServiceQuery
     {
-        ICollection<Domain.Entity.User> Read_GetAllUser();
+        List<Domain.Entity.User> Read_GetAllUser();
         Domain.Entity.User Login(LoginDTO loginDTO);
 
 

@@ -31,6 +31,16 @@ namespace Application.Command.Services.User
                     Username = signUpDTO.Username
                 });
                 _commandContext.SaveChanges();
+                _queryContext.Users.Add(new Domain.Entity.User()
+                {
+                    Email = signUpDTO.Email,
+                    Fullname = signUpDTO.Fullname,
+                    IsDeleted = false,
+                    Password = signUpDTO.Password,
+                    Role = UserRole.User,
+                    Username = signUpDTO.Username
+                });
+                _queryContext.SaveChanges();
                 return new OperationHandler() { Message = "We created your account successfully!" };
             }
             return new OperationHandler

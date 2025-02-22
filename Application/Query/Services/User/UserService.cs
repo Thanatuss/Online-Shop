@@ -15,9 +15,11 @@ namespace Application.Command.Services.User
         private readonly QueryDBContext _queryContext = queryDBContext;    
         private readonly CommandDBContext _commandContext = commandDBContext;
 
-        public ICollection<Domain.Entity.User> Read_GetAllUser()
+        public List<Domain.Entity.User> Read_GetAllUser()
         {
-            ICollection<Domain.Entity.User> GetAllUsers = _queryContext.Users.Where(x=>x.IsDeleted != false).ToList();
+            
+            List<Domain.Entity.User> GetAllUsers = _queryContext.Users.Where(x=>x.IsDeleted == false).ToList();
+            var test = "test";
             return GetAllUsers;
         }
         // Login Area

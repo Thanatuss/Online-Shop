@@ -39,7 +39,8 @@ namespace EndPoint.Controllers
             });
             return Ok(result);
         }
-        
+
+        [HttpPost("GetAll")]
         public IActionResult GetAll()
         {
             return Ok(_userServiceQuery.Read_GetAllUser());

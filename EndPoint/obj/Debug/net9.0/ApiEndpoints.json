@@ -33,8 +33,8 @@
   {
     "ContainingType": "EndPoint.Controllers.UserController",
     "Method": "GetAll",
-    "RelativePath": "api/User",
-    "HttpMethod": "",
+    "RelativePath": "api/User/GetAll",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
