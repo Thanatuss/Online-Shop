@@ -30,7 +30,6 @@ namespace Application.Command.Services.User
                     Role = UserRole.User,
                     Username = signUpDTO.Username
                 });
-                _commandContext.SaveChanges();
                 _queryContext.Users.Add(new Domain.Entity.User()
                 {
                     Email = signUpDTO.Email,
@@ -40,6 +39,7 @@ namespace Application.Command.Services.User
                     Role = UserRole.User,
                     Username = signUpDTO.Username
                 });
+                _commandContext.SaveChanges();
                 _queryContext.SaveChanges();
                 return new OperationHandler() { Message = "We created your account successfully!" };
             }
