@@ -13,4 +13,13 @@ namespace Application.Command.DTO.User
         public string Email { get; set; }
         public string Password { get; set; }
     }
+    public class SignUpDTO : UpdateDTO{ }
+
+
+
+    public class RemoveAccountDTO
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
 }
