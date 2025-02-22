@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance.DBContext;
 
 #nullable disable
 
-namespace Persistance.Migrations
+namespace Persistance.Migrations.QueryDB
 {
-    [DbContext(typeof(CommandDBContext))]
-    partial class CommandDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(QueryDBContext))]
+    [Migration("20250222071359_ChangeGmailToEmail")]
+    partial class ChangeGmailToEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

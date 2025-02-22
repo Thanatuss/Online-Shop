@@ -15,3 +15,4 @@ C:\Users\HP\Desktop\OnlineProject2\Application\obj\Debug\net9.0\Application.dll
 C:\Users\HP\Desktop\OnlineProject2\Application\obj\Debug\net9.0\refint\Application.dll
 C:\Users\HP\Desktop\OnlineProject2\Application\obj\Debug\net9.0\Application.pdb
 C:\Users\HP\Desktop\OnlineProject2\Application\obj\Debug\net9.0\ref\Application.dll
+C:\Users\HP\Desktop\OnlineProject2\Application\obj\Debug\net9.0\Application.sourcelink.json

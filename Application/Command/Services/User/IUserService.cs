@@ -11,9 +11,8 @@ namespace Application.Command.Services.User
     public interface IUserService 
     {
         
-        OperationHandler Login(SignUpDTOS signUpDTOS);
-        OperationHandler Create(SignUpDTOS signUpDTOS);
-        OperationHandler Update(UpdateDTO updateDto);
+        OperationHandler Register(SignUpDTO signUpDTO);
+        OperationHandler Update(UpdateDTO updateDTO);
         OperationHandler DeleteAccount(RemoveAccountDTO removeAccountDTO);
 
     }

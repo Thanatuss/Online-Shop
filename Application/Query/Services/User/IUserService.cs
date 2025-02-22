@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Command.DTO.User;
-
+using Application.Command.Utilities;
 using Domain.Entity;
 namespace Application.Command.Services.User
 {
     public interface IUserServiceQuery
     {
-        //OperationHandler ReadAll();
+        ICollection<Domain.Entity.User> Read_GetAllUser();
+        Domain.Entity.User Login(LoginDTO loginDTO);
 
 
 

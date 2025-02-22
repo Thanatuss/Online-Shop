@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance.DBContext;
 
@@ -11,9 +12,11 @@ using Persistance.DBContext;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(CommandDBContext))]
-    partial class CommandDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250222071344_ChangeGmailToEmail")]
+    partial class ChangeGmailToEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

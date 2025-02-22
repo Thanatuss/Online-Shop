@@ -15,10 +15,18 @@ namespace Application.Command.Services.User
         private readonly QueryDBContext _queryContext = queryDBContext;    
         private readonly CommandDBContext _commandContext = commandDBContext;
 
+        public ICollection<Domain.Entity.User> Read_GetAllUser()
+        {
+            ICollection<Domain.Entity.User> GetAllUsers = _queryContext.Users.Where(x=>x.IsDeleted != false).ToList();
+            return GetAllUsers;
+        }
+        // Login Area
+        public Domain.Entity.User Login(LoginDTO loginDTO)
+        {
 
-
-
-
-
+            var User = _queryContext.Users.SingleOrDefault(x => x.Username == loginDTO.Username && x.Password == loginDTO.Password);
+            return User;
+        }
+        // End Login Area
     }
 }

@@ -15,41 +15,51 @@ namespace Application.Command.Services.User
         private readonly QueryDBContext _queryContext = queryDBContext;    
         private readonly CommandDBContext _commandContext = commandDBContext;
 
-        public OperationHandler Create(SignUpDTOS signUpDTOS)
+        // Register Area
+        public OperationHandler Register(SignUpDTO signUpDTO)
         {
-            var anyUsername = _commandContext.Users.Any(x => x.Username == signUpDTOS.Username);
-            var anyEmail = _commandContext.Users.Any(x => x.Gmail == signUpDTOS.Email);
-            if (!anyEmail && !anyUsername)
+            var SearchForDuplicate = IsDuplicateExistVRegister(signUpDTO);
+            if (SearchForDuplicate)
             {
                 _commandContext.Users.Add(new Domain.Entity.User()
                 {
-                    Gmail = signUpDTOS.Email,
-                    Fullname = signUpDTOS.Fullname,
+                    Email = signUpDTO.Email,
+                    Fullname = signUpDTO.Fullname,
                     IsDeleted = false,
-                    Password = signUpDTOS.Password,
+                    Password = signUpDTO.Password,
                     Role = UserRole.User,
-                    Username = signUpDTOS.Username
+                    Username = signUpDTO.Username
                 });
                 _commandContext.SaveChanges();
                 return new OperationHandler() { Message = "We created your account successfully!" };
             }
-            else
+            return new OperationHandler
             {
-                return new OperationHandler
-                {
-                    Message = "We can not create your new account!"
-                };
-            }
-            
-        }
+                Message = "We can not create your new account!"
+            };
 
+        }
+        private bool IsDuplicateExistVRegister(SignUpDTO signUpDTO)
+        {
+            var isEmailRepeated = _commandContext.Users.Any(x => x.Email == signUpDTO.Email);
+            var isUsernameRepeated = _commandContext.Users.Any(x => x.Username == signUpDTO.Username);
+            if (!isEmailRepeated && !isUsernameRepeated)
+            {
+                return true;
+            }
+            return false;
+
+        }
+        // End Register Area
+
+        // Delete Area
         public OperationHandler DeleteAccount(RemoveAccountDTO removeAccountDTO)
         {
-            var User = _commandContext.Users.SingleOrDefault(x =>
-                x.Username == removeAccountDTO.Username && x.Password == removeAccountDTO.Password);
-            if (User != null)
+            var ResultFindUser = FindUserVDeleteUser(removeAccountDTO);
+            if (ResultFindUser != null)
             {
-                var search = _commandContext.Users.Remove(User);
+                var search = _commandContext.Users.Remove(ResultFindUser);
+                _commandContext.SaveChanges();
                 return new OperationHandler
                 {
                     Status = Status.Success,
@@ -59,44 +69,35 @@ namespace Application.Command.Services.User
             return new OperationHandler
             {
                 Status = Status.NotFound,
-                Message = "Your could not Removed your account!"
+                Message = "We could not Removed your account!"
             };
-
-
-
         }
-
-        public OperationHandler Login(SignUpDTOS signUpDTOS)
+        private Domain.Entity.User FindUserVDeleteUser(RemoveAccountDTO removeAccountDTO)
         {
-            var isEmailRepeated = _commandContext.Users.Any(x => x.Gmail == signUpDTOS.Email);
-            var isUsernameRepeated = _commandContext.Users.Any(x => x.Username == signUpDTOS.Username);
-            if (!isEmailRepeated && !isUsernameRepeated)
+            var userfinder = _commandContext.Users.SingleOrDefault(x => x.Username == removeAccountDTO.Username);
+            if(userfinder != null)
             {
-                _commandContext.Users.Add(new Domain.Entity.User
-                {
-                    Fullname = signUpDTOS.Fullname,
-                    Gmail = signUpDTOS.Email,
-                    IsDeleted = false,
-                    Password = signUpDTOS.Password,
-                    Role = UserRole.User,
-                    Username = signUpDTOS.Username
-                });
-                _commandContext.SaveChanges();
+                var Passwordfinder = userfinder.Password == removeAccountDTO.Password;
+                var selectUser =
+                    _commandContext.Users.SingleOrDefault(x => x.Username == removeAccountDTO.Username && x.Password == removeAccountDTO.Password && x.IsDeleted == false);
+                return userfinder;
             }
-            return new OperationHandler() { Message = "Success" };
+            return userfinder;
+
 
         }
+        // End Delete Area
+        //Alidsdfa -- Ebrahimiasdfa
+        // Alfsdafsdafa
 
-
-
-        public OperationHandler Update(UpdateDTO updateDto)
+        // Update Area
+        public OperationHandler Update(UpdateDTO updateDTO)
         {
-            var selectUser =
-                _commandContext.Users.SingleOrDefault(x => x.Username == updateDto.Username && x.Password == updateDto.Password);
-            if (selectUser != null)
+            var ResultFindUserMethod = FindUser(updateDTO);
+            if (ResultFindUserMethod != null)
             {
-                selectUser.Fullname = updateDto.Fullname;
-                selectUser.Gmail = updateDto.Email;
+                ResultFindUserMethod.Fullname = updateDTO.Fullname;
+                ResultFindUserMethod.Email = updateDTO.Email;
                 _commandContext.SaveChanges();
                 return new OperationHandler()
                 {
@@ -104,15 +105,18 @@ namespace Application.Command.Services.User
                     Status = Status.Success
                 };
             }
-            else
+            return new OperationHandler()
             {
-                return new OperationHandler()
-                {
-                    Message = "We could not update your account!", Status = Status.Error
-                };
-            }
-            
-
+                Message = "We could not update your account!",
+                Status = Status.Error
+            };
         }
+        private Domain.Entity.User FindUser(UpdateDTO updateDTO)
+        {
+            var selectUser =
+                _commandContext.Users.SingleOrDefault(x => x.Username == updateDTO.Username && x.Password == updateDTO.Password && x.IsDeleted == false);
+            return selectUser;
+        }
+        // End Update Area
     }
 }
