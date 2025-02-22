@@ -39,6 +39,11 @@ namespace EndPoint.Controllers
             });
             return Ok(result);
         }
+        
+        public IActionResult GetAll()
+        {
+            return Ok(_userServiceQuery.Read_GetAllUser());
+        }
 
 
     }

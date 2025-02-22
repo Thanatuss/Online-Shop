@@ -1,31 +1,5 @@
 [
   {
-    "ContainingType": "EndPoint.Controllers.OneController",
-    "Method": "CreateItem",
-    "RelativePath": "api/One",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "item",
-        "Type": "EndPoint.Controllers.Item",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EndPoint.Controllers.Test1Controller",
-    "Method": "Index",
-    "RelativePath": "api/Test1",
-    "HttpMethod": "",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "EndPoint.Controllers.UserController",
     "Method": "Register",
     "RelativePath": "api/User",
@@ -58,9 +32,9 @@
   },
   {
     "ContainingType": "EndPoint.Controllers.UserController",
-    "Method": "Index",
+    "Method": "GetAll",
     "RelativePath": "api/User",
-    "HttpMethod": "GET",
+    "HttpMethod": "",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
@@ -86,26 +60,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EndPoint.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[EndPoint.WeatherForecast, EndPoint, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]
