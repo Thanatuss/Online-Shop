@@ -1,4 +1,6 @@
-﻿using Application.Command.Services.User;
+﻿using Application.Command.DTO.User;
+using Application.Command.Services.User;
+using Application.Command.Utilities;
 using Domain.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +46,23 @@ namespace EndPoint.Controllers
         public IActionResult GetAll()
         {
             return Ok(_userServiceQuery.Read_GetAllUser());
+        }
+
+        [HttpPost("Update")]
+        public IActionResult Update(string fullname, string username, string password, string email)
+        {
+            var result = _userService.Update(new UpdateDTO()
+            {
+                Email = email,
+                Fullname = fullname,
+                Password = password,
+                Username = username
+            });
+            /*if (result.Status == Status.Success)
+            {
+                
+            }*/
+            return Ok(result);
         }
 
 

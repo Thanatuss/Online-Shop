@@ -69,6 +69,11 @@ namespace Application.Command.Services.User
             if (ResultFindUser != null)
             {
                 var search = _commandContext.Users.Remove(ResultFindUser);
+                var FindUserInQuery = _queryContext.Users.Single(x => x.Username == removeAccountDTO.Username);
+                var password = FindUserInQuery.Password == removeAccountDTO.Password;
+                
+                _queryContext.Users.Remove(FindUserInQuery);
+                _queryContext.SaveChanges();
                 _commandContext.SaveChanges();
                 return new OperationHandler
                 {
@@ -109,6 +114,7 @@ namespace Application.Command.Services.User
                 ResultFindUserMethod.Fullname = updateDTO.Fullname;
                 ResultFindUserMethod.Email = updateDTO.Email;
                 _commandContext.SaveChanges();
+                _queryContext.SaveChanges();
                 return new OperationHandler()
                 {
                     Message = "We updated your account successfully!",
