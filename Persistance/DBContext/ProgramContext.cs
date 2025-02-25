@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entity;
 using Microsoft.EntityFrameworkCore;
-
+using Domain.ProductEntity;
 namespace Persistance.DBContext
 {
     public class CommandDBContext : DbContext
@@ -15,6 +15,8 @@ namespace Persistance.DBContext
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+
     }
     public class QueryDBContext : DbContext
     {
@@ -23,5 +25,7 @@ namespace Persistance.DBContext
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+
     }
 }

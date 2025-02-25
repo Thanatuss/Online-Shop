@@ -19,7 +19,7 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Command"));
 });
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserServic>();
 builder.Services.AddScoped<UserValidationService>();
 builder.Services.AddScoped<IUserServiceQuery, UserServiceQuery>();
 

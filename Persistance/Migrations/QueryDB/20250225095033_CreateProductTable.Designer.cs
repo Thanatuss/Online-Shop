@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistance.DBContext;
 
@@ -11,9 +12,11 @@ using Persistance.DBContext;
 namespace Persistance.Migrations.QueryDB
 {
     [DbContext(typeof(QueryDBContext))]
-    partial class QueryDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250225095033_CreateProductTable")]
+    partial class CreateProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
