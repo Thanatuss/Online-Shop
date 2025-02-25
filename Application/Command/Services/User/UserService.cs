@@ -10,16 +10,27 @@ using Domain.Entity;
 using Persistance.DBContext;
 namespace Application.Command.Services.User
 {
-    public class UserService(QueryDBContext queryDBContext, CommandDBContext commandDBContext) : IUserService
+    public class UserServic  : IUserService
     {
-        private readonly QueryDBContext _queryContext = queryDBContext;    
-        private readonly CommandDBContext _commandContext = commandDBContext;
-
-        // Register Area
-        public OperationHandler Register(SignUpDTO signUpDTO)
+        private readonly UserValidationService _userValidationService;
+        private readonly QueryDBContext _queryContext ;
+        private readonly CommandDBContext _commandContext;
+        public UserServic(QueryDBContext queryDBContext, CommandDBContext commandDBContext, UserValidationService userValidationService)
         {
-            var SearchForDuplicate = IsDuplicateExistVRegister(signUpDTO);
-            if (SearchForDuplicate)
+            _userValidationService = userValidationService; 
+            _queryContext = queryDBContext;
+            _commandContext = commandDBContext;
+
+        }
+        public async Task<OperationHandler> Register(SignUpDTO signUpDTO)
+        {
+            var areFiledsValid = _userValidationService.AreFieldsNotEmpty(signUpDTO);
+            if (!areFiledsValid)
+            {
+                return OperationHandler.Error("Your informations can not be empty!");
+            }
+            var isEmialOrUsernameAreDuplicate = await _userValidationService.IsDuplicateExistVRegister(signUpDTO);
+            if (!isEmialOrUsernameAreDuplicate)
             {
                 _commandContext.Users.Add(new Domain.Entity.User()
                 {
@@ -41,80 +52,41 @@ namespace Application.Command.Services.User
                 });
                 _commandContext.SaveChanges();
                 _queryContext.SaveChanges();
-                return new OperationHandler() { Message = "We created your account successfully!" };
+                return OperationHandler.Success("We created your email successfully!");
             }
-            return new OperationHandler
-            {
-                Message = "We can not create your new account!"
-            };
-
-        }
-        private bool IsDuplicateExistVRegister(SignUpDTO signUpDTO)
-        {
-            var isEmailRepeated = _commandContext.Users.Any(x => x.Email == signUpDTO.Email);
-            var isUsernameRepeated = _commandContext.Users.Any(x => x.Username == signUpDTO.Username);
-            if (!isEmailRepeated && !isUsernameRepeated)
-            {
-                return true;
-            }
-            return false;
-
-        }
-        // End Register Area
-
-        // Delete Area
-        public OperationHandler DeleteAccount(RemoveAccountDTO removeAccountDTO)
-        {
-            var ResultFindUser = FindUserVDeleteUser(removeAccountDTO);
-            if (ResultFindUser != null)
-            {
-                var search = _commandContext.Users.Remove(ResultFindUser);
-                var FindUserInQuery = _queryContext.Users.Single(x => x.Username == removeAccountDTO.Username);
-                var password = FindUserInQuery.Password == removeAccountDTO.Password;
-                
-                _queryContext.Users.Remove(FindUserInQuery);
-                _queryContext.SaveChanges();
-                _commandContext.SaveChanges();
-                return new OperationHandler
-                {
-                    Status = Status.Success,
-                    Message = "Your account Removed successfully!"
-                };
-            }
-            return new OperationHandler
-            {
-                Status = Status.NotFound,
-                Message = "We could not Removed your account!"
-            };
-        }
-        private Domain.Entity.User FindUserVDeleteUser(RemoveAccountDTO removeAccountDTO)
-        {
-            var userfinder = _commandContext.Users.SingleOrDefault(x => x.Username == removeAccountDTO.Username);
-            if(userfinder != null)
-            {
-                var Passwordfinder = userfinder.Password == removeAccountDTO.Password;
-                var selectUser =
-                    _commandContext.Users.SingleOrDefault(x => x.Username == removeAccountDTO.Username && x.Password == removeAccountDTO.Password && x.IsDeleted == false);
-                return userfinder;
-            }
-            return userfinder;
+            return OperationHandler.Error("Your Email or Username is exist!");
+            
 
 
         }
-        // End Delete Area
-        //Alidsdfa -- Ebrahimiasdfa
-        // Alfsdafsdafa
 
-        // Update Area
-        public OperationHandler Update(UpdateDTO updateDTO)
+
+
+        public async Task<OperationHandler> DeleteAccount(RemoveAccountDTO removeAccountDTO)
         {
-            var ResultFindUserMethod = FindUser(updateDTO);
-            if (ResultFindUserMethod != null)
+            var User = _userValidationService.FindUserViaUP(removeAccountDTO);
+            if (User != null)
             {
-                ResultFindUserMethod.Fullname = updateDTO.Fullname;
-                ResultFindUserMethod.Email = updateDTO.Email;
-                _commandContext.SaveChanges();
-                _queryContext.SaveChanges();
+                _commandContext.Users.Remove(User);
+                _queryContext.Users.Remove(User);
+                await _commandContext.SaveChangesAsync();
+                await _queryContext.SaveChangesAsync();
+                return OperationHandler.Success("Your account Removed successfully!");
+            }
+            return OperationHandler.NotFound("We could not find any account!");
+        }
+
+        public async Task<OperationHandler> Update(UpdateDTO updateDTO)
+        {
+            var areFiledsValid = _userValidationService.AreFieldsNotEmpty(new SignUpDTO { Username = updateDTO.Username ,Email = updateDTO.Email,Fullname = updateDTO.Fullname , Password = updateDTO.Password});
+            var User = await _userValidationService.FindUserViaEmail(updateDTO);
+            if (User != null)
+            {
+                User.Fullname = updateDTO.Fullname;
+                User.Username = updateDTO.Username;
+                User.Password = updateDTO.Password;
+                await _commandContext.SaveChangesAsync();
+                await _queryContext.SaveChangesAsync();
                 return new OperationHandler()
                 {
                     Message = "We updated your account successfully!",
@@ -127,12 +99,6 @@ namespace Application.Command.Services.User
                 Status = Status.Error
             };
         }
-        private Domain.Entity.User FindUser(UpdateDTO updateDTO)
-        {
-            var selectUser =
-                _commandContext.Users.SingleOrDefault(x => x.Username == updateDTO.Username && x.Password == updateDTO.Password && x.IsDeleted == false);
-            return selectUser;
-        }
-        // End Update Area
     }
 }
+

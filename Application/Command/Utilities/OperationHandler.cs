@@ -12,25 +12,28 @@ namespace Application.Command.Utilities
         public string Message { get; set; }
         public Status Status { get; set; }
 
-        public OperationHandler Success(string message)
+        public static OperationHandler Success(string message)
         {
             return new OperationHandler()
             {
-                Message = message
+                Message = message , 
+                Status = Status.Success
             };
         }
-        public OperationHandler Error(string message)
+        public static OperationHandler Error(string message)
         {
             return new OperationHandler()
             {
-                Message = message
+                Message = message , 
+                Status = Status.Error
             };
         }
-        public OperationHandler NotFound(string message)
+        public static OperationHandler NotFound(string message)
         {
             return new OperationHandler()
             {
-                Message = message
+                Message = message , 
+                Status = Status.NotFound
             };
         }
     }

@@ -1,4 +1,5 @@
 using Application.Command.Services.User;
+using Application.Command.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Persistance.DBContext; 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Command"));
 });
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<UserValidationService>();
 builder.Services.AddScoped<IUserServiceQuery, UserServiceQuery>();
 
 var app = builder.Build();
