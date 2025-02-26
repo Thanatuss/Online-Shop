@@ -11,7 +11,7 @@ namespace Domain.ProductEntity
     {
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public int ProductId { get; set; }
+        public int ProductId { get; set; } = 1;
         public long Price { get; set; }
         public bool IsActive { get; set; } = true;
 

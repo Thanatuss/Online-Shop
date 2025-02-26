@@ -8,22 +8,22 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Description",
+        "Name": "name",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "Price",
+        "Name": "description",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ProductId",
+        "Name": "price",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "ProductName",
+        "Name": "Id",
         "Type": "System.String",
         "IsRequired": false
       }
