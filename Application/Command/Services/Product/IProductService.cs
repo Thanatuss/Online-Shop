@@ -11,8 +11,8 @@ namespace Application.Command.Services.Product
     public interface IProductService
     {
         Task<OperationHandler> Add(AddDTO addDTO);
-        OperationHandler Update(UpdateDTO updateDTO);
-        OperationHandler Delete(DeleteDTO deleteDTO);
+        Task<OperationHandler> Update(UpdateDTO updateDTO);
+        Task<OperationHandler> Delete(DeleteDTO deleteDTO);
 
     }
 }

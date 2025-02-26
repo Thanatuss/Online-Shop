@@ -11,13 +11,13 @@ namespace EndPoint.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController(IProductService productService , IProductServiceQuery productServiceQuery) : ControllerBase
+    public class ProductController(IProductService productService, IProductServiceQuery productServiceQuery) : ControllerBase
     {
         private readonly IProductService _productService = productService;
         private readonly IProductServiceQuery _productServiceQuery = productServiceQuery;
 
         [HttpPost("Add")]
-        public IActionResult Add(string Description , string Price , string ProductId , string ProductName)
+        public IActionResult Add(string Description, string Price, string ProductId, string ProductName)
         {
             var result = _productService.Add(new AddDTO()
             {
@@ -33,17 +33,13 @@ namespace EndPoint.Controllers
         public IActionResult Remove(string ProductId)
         {
             var result = _productService.Delete(new DeleteDTO { ProductId = Convert.ToInt32(ProductId) });
-            if(result.Status == Status.NotFound)
-            {
-                return BadRequest(result);
-            }
             return Ok(result);
         }
         [HttpPost("Update")]
-        public IActionResult Update(string ProductId , string ProductName , string Description , string Price , string IsActive0Or1)
+        public IActionResult Update(string ProductId, string ProductName, string Description, string Price, string IsActive0Or1)
         {
-            bool isActive ;
-            if(Convert.ToInt32(IsActive0Or1) == 0)
+            bool isActive;
+            if (Convert.ToInt32(IsActive0Or1) == 0)
             {
                 isActive = false;
             }
@@ -51,24 +47,21 @@ namespace EndPoint.Controllers
             {
                 isActive = true;
             }
-                var result = _productService.Update(new UpdateDTO
-                {
-                    Description = Description,
-                    ProductName = ProductName,
-                    ProductId = Convert.ToInt32(ProductId),
-                    Price = long.Parse(Price),
-                    IsActive = isActive
-
-
-                })
-                ;
-            if (result.Status == Status.NotFound)
+            var result = _productService.Update(new UpdateDTO
             {
-                return BadRequest(result);
-            }
+                Description = Description,
+                ProductName = ProductName,
+                ProductId = Convert.ToInt32(ProductId),
+                Price = long.Parse(Price),
+                IsActive = isActive
+
+
+            })
+            ;
+
             return Ok(result);
         }
-        
+
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {

@@ -160,3 +160,5 @@ C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\zh-Hant\Microsoft.C
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Application.dll
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Application.pdb
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\obj\Debug\net9.0\EndPoint.sourcelink.json
+C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\StackExchange.Redis.dll
