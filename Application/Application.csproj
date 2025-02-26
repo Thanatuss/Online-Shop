@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Persistance\Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Query\DTO\Product\" />
+  </ItemGroup>
+
 </Project>

@@ -10,11 +10,11 @@ namespace Domain.ProductEntity
     public class Product : Base
     {
         public string ProductName { get; set; }
-        public long Description { get; set; }
+        public string Description { get; set; }
         public int ProductId { get; set; }
-        public int Price { get; set; }
-        public bool IsActive { get; set; }
-        
-        
+        public long Price { get; set; }
+        public bool IsActive { get; set; } = true;
+
+
     }
 }

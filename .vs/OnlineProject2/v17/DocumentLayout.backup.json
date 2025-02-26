@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8125FE33-6053-43DE-B6F0-79439C75DB64}|Persistance\\Persistance.csproj|c:\\users\\hp\\desktop\\onlineproject2\\persistance\\dbcontext\\programcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8125FE33-6053-43DE-B6F0-79439C75DB64}|Persistance\\Persistance.csproj|solutionrelative:persistance\\dbcontext\\programcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\20250225095021_CreateProductTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Persistance\\Migrations\\20250225095021_CreateProductTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\query\\services\\product\\productservicequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\query\\services\\product\\productservicequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82CC43AF-75B1-4EB0-9C91-6B487CC46F78}|Domain\\Domain.csproj|c:\\users\\hp\\desktop\\onlineproject2\\domain\\productentity\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82CC43AF-75B1-4EB0-9C91-6B487CC46F78}|Domain\\Domain.csproj|solutionrelative:domain\\productentity\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\query\\services\\product\\iproductservicequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\query\\services\\product\\iproductservicequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,53 +35,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20250225095033_CreateProductTable.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs",
-              "RelativeDocumentMoniker": "Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs",
-              "RelativeToolTip": "Persistance\\Migrations\\QueryDB\\20250225095033_CreateProductTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "EndPoint\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "EndPoint\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAwwEsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T09:50:33.259Z",
+              "WhenOpened": "2025-02-26T08:03:30.748Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "20250225095021_CreateProductTable.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\20250225095021_CreateProductTable.cs",
-              "RelativeDocumentMoniker": "Persistance\\Migrations\\20250225095021_CreateProductTable.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\Migrations\\20250225095021_CreateProductTable.cs",
-              "RelativeToolTip": "Persistance\\Migrations\\20250225095021_CreateProductTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ProductServiceQuery.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Product\\ProductServiceQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Query\\Services\\Product\\ProductServiceQuery.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Product\\ProductServiceQuery.cs",
+              "RelativeToolTip": "Application\\Query\\Services\\Product\\ProductServiceQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T09:50:21.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProgramContext.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\DBContext\\ProgramContext.cs",
-              "RelativeDocumentMoniker": "Persistance\\DBContext\\ProgramContext.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Persistance\\DBContext\\ProgramContext.cs",
-              "RelativeToolTip": "Persistance\\DBContext\\ProgramContext.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T09:47:41.126Z",
+              "WhenOpened": "2025-02-26T07:57:56.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Domain\\ProductEntity\\Product.cs",
-              "RelativeDocumentMoniker": "Domain\\ProductEntity\\Product.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Domain\\ProductEntity\\Product.cs",
-              "RelativeToolTip": "Domain\\ProductEntity\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAALAAAAAAAAAA==",
+              "Title": "IProductServiceQuery.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Product\\IProductServiceQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Query\\Services\\Product\\IProductServiceQuery.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Product\\IProductServiceQuery.cs",
+              "RelativeToolTip": "Application\\Query\\Services\\Product\\IProductServiceQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T09:41:48.359Z",
+              "WhenOpened": "2025-02-26T07:56:48.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
+              "RelativeDocumentMoniker": "EndPoint\\Program.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
+              "RelativeToolTip": "EndPoint\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAowBoAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T07:56:07.901Z",
               "EditorCaption": ""
             }
           ]
