@@ -23,12 +23,12 @@ namespace Application.Command.Services.Comment
     public class UpdateCommentHandler : IRequestHandler<UpdateCommentCommand, OperationHandler>
     {
         private readonly CommandDBContext _commandDb;
-        private readonly QueryDBContext _queryDbContext;
 
-        public UpdateCommentHandler(CommandDBContext commandDbContext , QueryDBContext queryDbContext)
+
+        public UpdateCommentHandler(CommandDBContext commandDbContext )
         {
             _commandDb = commandDbContext;
-            _queryDbContext = queryDbContext;
+
         }
 
         public async Task<OperationHandler> Handle(UpdateCommentCommand request, CancellationToken cancellationToken)
@@ -36,14 +36,10 @@ namespace Application.Command.Services.Comment
             var updateDTO = request.UpdateDTO;
 
             var userCommand = _commandDb.ProductComments.SingleOrDefault(x => x.Id == updateDTO.CommentId);
-            var userQuery = _queryDbContext.ProductComments.SingleOrDefault(x => x.Id == updateDTO.CommentId);
 
-            //var userCommand = _commandDb.ProductComments.SingleOrDefault(x => x.Id == updateDTO.CommentId);
-            //var userQuery = _queryDbContext.ProductComments.SingleOrDefault(x => x.Id == updateDTO.CommentId);
             userCommand.Text = updateDTO.Text;
             userCommand.IsDeleted = updateDTO.IsDelete;
-            userQuery.Text = updateDTO.Text;
-            userQuery.IsDeleted = updateDTO.IsDelete;
+            await _commandDb.SaveChangesAsync();
             return OperationHandler.Success("We Updated your comment successfully!");
         }
     }

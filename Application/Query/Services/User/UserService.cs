@@ -18,7 +18,7 @@ namespace Application.Command.Services.User
         public List<Domain.Entity.User> Read_GetAllUser()
         {
             
-            List<Domain.Entity.User> GetAllUsers = _queryContext.Users.Where(x=>x.IsDeleted == false).ToList();
+            List<Domain.Entity.User> GetAllUsers = _commandContext.Users.Where(x=>x.IsDeleted == false).ToList();
             var test = "test";
             return GetAllUsers;
         }

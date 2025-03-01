@@ -26,12 +26,10 @@ namespace Application.Command.Services.User
     public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, OperationHandler>
     {
         private readonly UserValidationService _userValidationService;
-        private readonly QueryDBContext _queryContext;
         private readonly CommandDBContext _commandContext;
         public UpdateUserHandler(QueryDBContext queryDBContext, CommandDBContext commandDBContext, UserValidationService userValidationService)
         {
             _userValidationService = userValidationService;
-            _queryContext = queryDBContext;
             _commandContext = commandDBContext;
 
         }
@@ -53,7 +51,6 @@ namespace Application.Command.Services.User
                 UserCommand.Password = Updateuser.Password;
                 
                 await _commandContext.SaveChangesAsync();
-                await _queryContext.SaveChangesAsync();
                 return new OperationHandler()
                 {
                     Message = "We updated your account successfully!",

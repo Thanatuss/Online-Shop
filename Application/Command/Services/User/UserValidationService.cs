@@ -10,9 +10,9 @@ using Persistance.DBContext;
 
 namespace Application.Command.Utilities
 {
-    public class UserValidationService(QueryDBContext queryDBContext)
+    public class UserValidationService(CommandDBContext queryDBContext)
     {
-        private readonly QueryDBContext _queryContext = queryDBContext;
+        private readonly CommandDBContext _queryContext = queryDBContext;
 
         public bool AreFieldsNotEmpty(SignUpDTO signUpDTO)
         {

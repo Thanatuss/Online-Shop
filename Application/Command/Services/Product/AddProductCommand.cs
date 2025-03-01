@@ -21,14 +21,13 @@ namespace Application.Command.Services.Product
     public class AddProductHandler : IRequestHandler<AddProductCommand, OperationHandler>
     {
         private readonly CommandDBContext _commandDbContext;
-        private readonly QueryDBContext _queryDbContext;
         private readonly ProductValidationService _productValidationService;
 
         public AddProductHandler(CommandDBContext commandDbContext, ProductValidationService productValidationService, QueryDBContext queryDbContext)
         {
             _commandDbContext = commandDbContext;
             _productValidationService = productValidationService;
-            _queryDbContext = queryDbContext;
+
         }
 
         public async Task<OperationHandler> Handle(AddProductCommand request, CancellationToken cancellationToken)
@@ -45,15 +44,8 @@ namespace Application.Command.Services.Product
                     ProductId = addDTO.ProductId,
                     ProductName = addDTO.ProductName
                 });
-                await _queryDbContext.Products.AddAsync(new Domain.ProductEntity.Product()
-                {
-                    Description = addDTO.Description,
-                    Price = addDTO.Price,
-                    ProductId = addDTO.ProductId,
-                    ProductName = addDTO.ProductName
-                });
                 _commandDbContext.SaveChanges();
-                _queryDbContext.SaveChanges();
+
 
                 return OperationHandler.Success("All fields must be filled.");
             }
@@ -75,10 +67,8 @@ namespace Application.Command.Services.Product
                 };
 
                 await _commandDbContext.Products.AddAsync(newProduct, cancellationToken);
-                await _queryDbContext.Products.AddAsync(newProduct, cancellationToken);
 
                 await _commandDbContext.SaveChangesAsync(cancellationToken);
-                await _queryDbContext.SaveChangesAsync(cancellationToken);
 
                 return OperationHandler.Success("We created your product successfully!");
             }

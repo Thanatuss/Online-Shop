@@ -24,12 +24,10 @@ namespace Application.Command.Services.User
     public class DeleteUserHandler : IRequestHandler<DeleteUserCommand, OperationHandler>
     {
         private readonly UserValidationService _userValidationService;
-        private readonly QueryDBContext _queryContext;
         private readonly CommandDBContext _commandContext;
         public DeleteUserHandler(QueryDBContext queryDBContext, CommandDBContext commandDBContext, UserValidationService userValidationService)
         {
             _userValidationService = userValidationService;
-            _queryContext = queryDBContext;
             _commandContext = commandDBContext;
 
         }
@@ -47,9 +45,7 @@ namespace Application.Command.Services.User
             {
                 
                 _commandContext.Users.Remove(UserCommand);
-                _queryContext.Users.Remove(User);
                 await _commandContext.SaveChangesAsync();
-                await _queryContext.SaveChangesAsync();
                 return OperationHandler.Success("Your account Removed successfully!");
             }
             return OperationHandler.NotFound("We could not find any account!");

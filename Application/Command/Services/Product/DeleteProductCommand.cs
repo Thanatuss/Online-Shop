@@ -27,14 +27,13 @@ namespace Application.Command.Services.Product
     public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, OperationHandler>
     {
         private readonly CommandDBContext _commandDbContext;
-        private readonly QueryDBContext _queryDbContext;
         private readonly ProductValidationService _productValidationService;
 
         public DeleteProductHandler(CommandDBContext commandDbContext, ProductValidationService productValidationService, QueryDBContext queryDbContext)
         {
             _commandDbContext = commandDbContext;
             _productValidationService = productValidationService;
-            _queryDbContext = queryDbContext;
+
         }
 
         public async Task<OperationHandler> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
@@ -46,9 +45,8 @@ namespace Application.Command.Services.Product
             {
                 try
                 {
-                    _queryDbContext.Products.Remove(product);
+
                     _commandDbContext.Products.Remove(product);
-                    await _queryDbContext.SaveChangesAsync();
                     await _commandDbContext.SaveChangesAsync();
                     return OperationHandler.Success("We removed the product successfully!");
                 }

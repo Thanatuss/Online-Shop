@@ -9,9 +9,9 @@ using Persistance.DBContext;
 using Domain.ProductEntity;
 namespace Application.Command.Services.Product
 {
-    public class ProductValidationService(QueryDBContext queryDbContext)
+    public class ProductValidationService(CommandDBContext queryDbContext)
     {
-        private readonly QueryDBContext _queryDbContext = queryDbContext;
+        private readonly CommandDBContext _queryDbContext = queryDbContext;
 
         public bool AreFieldsNotEmpty(AddDTO addDTO)
         {
@@ -26,6 +26,7 @@ namespace Application.Command.Services.Product
 
         public Domain.ProductEntity.Product IsExistAnyViaId(DeleteDTO deleteDTO)
         {
+            var data = _queryDbContext.Products.Any(x => x.ProductId == deleteDTO.ProductId);
             return _queryDbContext.Products.SingleOrDefault(x => x.ProductId == deleteDTO.ProductId);
         }
         public Domain.ProductEntity.Product IsExistAnyViaIdUpdate(UpdateDTO updateDTO)

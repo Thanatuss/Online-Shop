@@ -1,18 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/./CommandDB/True/SqlTable/dbo.ProductComments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\comment\\addcommentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\comment\\addcommentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/./Query/True/SqlTable/dbo.ProductComments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -20,44 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AddCommentCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Comment\\AddCommentCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\Comment\\AddCommentCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Comment\\AddCommentCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\Comment\\AddCommentCommand.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAgwCMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T10:22:38.216Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.ProductComments [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/./Query/True/SqlTable/dbo.ProductComments.sql",
-              "ToolTip": "dbo.ProductComments [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-01T10:20:35.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "dbo.ProductComments [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/./CommandDB/True/SqlTable/dbo.ProductComments.sql",
-              "ToolTip": "dbo.ProductComments [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-03-01T10:20:29.224Z",
-              "EditorCaption": ""
             }
           ]
         }
