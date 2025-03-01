@@ -12,6 +12,7 @@ namespace Application.Command.Services.Product
 {
     public class DeleteProductCommand : IRequest<OperationHandler>
     {
+
         public DeleteDTO DeleteDTO { get; set; }
 
         public DeleteProductCommand(DeleteDTO deleteDTO)
@@ -39,8 +40,25 @@ namespace Application.Command.Services.Product
         public async Task<OperationHandler> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             var deleteDTO = request.DeleteDTO;
-            return OperationHandler.Success("All fields must be filled.");
+            var product = _productValidationService.IsExistAnyViaId(deleteDTO);
 
+            if (product != null)
+            {
+                try
+                {
+                    _queryDbContext.Products.Remove(product);
+                    _commandDbContext.Products.Remove(product);
+                    await _queryDbContext.SaveChangesAsync();
+                    await _commandDbContext.SaveChangesAsync();
+                    return OperationHandler.Success("We removed the product successfully!");
+                }
+                catch (Exception e)
+                {
+                    return OperationHandler.Error($"An error occurred while deleting the product: {e}");
+                }
+            }
+
+            return OperationHandler.NotFound("We can not find any product!");
         }
     }
 }

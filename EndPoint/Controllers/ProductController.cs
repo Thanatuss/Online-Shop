@@ -45,12 +45,25 @@ namespace EndPoint.Controllers
             return Ok(result);
 
         }
+
+
+
         [HttpPost("Remove")]
-        public IActionResult Remove(string ProductId)
+        public async Task<IActionResult> Remove(string ProductId)
         {
-            var result = _productService.Delete(new DeleteDTO { ProductId = Convert.ToInt32(ProductId) });
+            var Command = new DeleteProductCommand(new DeleteDTO()
+            {
+                ProductId = Convert.ToInt32(ProductId)
+            });
+
+            var result = await _mediator.Send(Command);
             return Ok(result);
         }
+
+
+
+
+
         [HttpPost("Update")]
         public IActionResult Update(string ProductId, string ProductName, string Description, string Price, string IsActive0Or1)
         {
@@ -76,6 +89,9 @@ namespace EndPoint.Controllers
 
             return Ok(result);
         }
+
+
+
 
         [HttpGet("GetAll")]
         public IActionResult GetAll()

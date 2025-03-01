@@ -22,6 +22,7 @@ namespace Application.Command.Services.User
             _commandContext = commandDBContext;
 
         }
+        
         public async Task<OperationHandler> Register(SignUpDTO signUpDTO)
         {
             var areFiledsValid = _userValidationService.AreFieldsNotEmpty(signUpDTO);

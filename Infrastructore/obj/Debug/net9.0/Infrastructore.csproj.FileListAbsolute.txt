@@ -1,0 +1,12 @@
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\bin\Debug\net9.0\Infrastructore.deps.json
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\bin\Debug\net9.0\Infrastructore.dll
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\bin\Debug\net9.0\Infrastructore.pdb
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.AssemblyInfoInputs.cache
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.AssemblyInfo.cs
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.sourcelink.json
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.dll
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\refint\Infrastructore.dll
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\Infrastructore.pdb
+C:\Users\HP\Desktop\OnlineProject2\Infrastructore\obj\Debug\net9.0\ref\Infrastructore.dll
