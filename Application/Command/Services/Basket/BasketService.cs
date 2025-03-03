@@ -1,10 +1,10 @@
 ﻿using Application.Command.DTO.Basket;
 using Application.Command.Services.Basket;
-using Application.Command.Utilities;
+using Application.Command.Utilities;using Infrastructore.Interfaces;
 using Persistance.DBContext;
 using StackExchange.Redis;
 
-public class BasketService : IBasketService
+public class BasketService : IBasketService 
 {
     private readonly CommandDBContext _commandDbContext;
     private static readonly ConnectionMultiplexer _redisConnection = ConnectionMultiplexer.Connect("127.0.0.1:6379");
@@ -19,7 +19,7 @@ public class BasketService : IBasketService
         return _redisConnection.GetDatabase();
     }
 
-    public OperationHandler AddToBasket(BasketDTO basketDto)
+    public async Task<OperationHandler> AddAsync(BasketDTO basketDto)
     {
         try
         {
@@ -31,25 +31,25 @@ public class BasketService : IBasketService
             var db = GetRedisDatabase();
             var redisKey = $"User-{basketDto.UserID}";
             var productField = $"Product-{basketDto.ProductID}";
-            var existingQuantity = db.HashGet(redisKey, productField);
+            var existingQuantity = await db.HashGetAsync(redisKey, productField);
 
             if (existingQuantity.HasValue)
             {
                 if (int.TryParse(existingQuantity.ToString(), out int currentQty))
                 {
                     var newQuantity = currentQty + 1;
-                    db.HashSet(redisKey, productField, newQuantity);
+                    await db.HashSetAsync(redisKey, productField, newQuantity);
                     return OperationHandler.Success("تعداد محصول به روز شد");
                 }
                 else
                 {
-                    db.HashSet(redisKey, productField, 1);
+                    await db.HashSetAsync(redisKey, productField, 1);
                     return OperationHandler.Success("مقدار نامعتبر بود، تعداد جدید تنظیم شد");
                 }
             }
             else
             {
-                db.HashSet(redisKey, productField, 1);
+                await db.HashSetAsync(redisKey, productField, 1);
                 return OperationHandler.Success("محصول به سبد اضافه شد");
             }
         }
@@ -64,4 +64,5 @@ public class BasketService : IBasketService
             return OperationHandler.Error("خطای داخلی سرور");
         }
     }
+
 }

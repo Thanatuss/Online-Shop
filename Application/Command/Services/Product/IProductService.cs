@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Application.Command.DTO.ProductDTO;
+﻿using Application.Command.DTO.ProductDTO;
 using Application.Command.Utilities;
 
 namespace Application.Command.Services.Product
 {
     public interface IProductService
     {
-        Task<OperationHandler> Add(AddDTO addDTO);
-        Task<OperationHandler> Update(UpdateDTO updateDTO);
-        Task<OperationHandler> Delete(DeleteDTO deleteDTO);
-
+        Task<OperationHandler> Add<T>(T dto) where T : AddDTO;
+        Task<OperationHandler> Update<T>(T dto) where T : UpdateDTO;
+        Task<OperationHandler> Delete<T>(T dto) where T : DeleteDTO;
     }
 }

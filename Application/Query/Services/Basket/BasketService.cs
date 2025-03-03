@@ -18,7 +18,7 @@ public class BasketServiceQuery : IBasketServiceQuery
         return _redisConnection.GetDatabase();
     }
 
-    public string GetAll(GetAllDTO getAllDto)
+    public async Task<string> GetAll(GetAllDTO getAllDto)
     {
         var db = GetRedisDatabase();
         var user = _commandDb.Users.SingleOrDefault(x => x.Id == getAllDto.UserId);

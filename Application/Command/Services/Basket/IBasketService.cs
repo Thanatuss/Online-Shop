@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
 using Application.Command.Utilities;
+using Infrastructore.Interfaces;
 
 namespace Application.Command.Services.Basket
 {
-    public interface IBasketService
+    public interface IBasketService 
     {
-        OperationHandler AddToBasket(BasketDTO basketDto);
+        Task<OperationHandler> AddAsync(BasketDTO basketDto);
+        //OperationHandler Add<T>(BasketDTO basketDto);
     }
 }

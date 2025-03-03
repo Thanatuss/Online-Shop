@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Command.Utilities;
-using Application.Query.DTO.Basket;
 
-namespace Application.Query.Services.Basket
+namespace Infrastructore.Interfaces
 {
-    public interface IBasketServiceQuery
+    public interface IWriteRepo
     {
-        Task<string> GetAll(GetAllDTO getAllDto);
+        Task<OperationHandler> Add<T>(T entity);
     }
 }

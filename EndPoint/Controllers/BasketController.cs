@@ -1,4 +1,5 @@
-﻿using Application.Command.DTO.Basket;
+﻿using System.Threading.Tasks;
+using Application.Command.DTO.Basket;
 using Application.Command.Services.Basket;
 using Application.Query.DTO.Basket;
 using Application.Query.Services.Basket;
@@ -19,9 +20,9 @@ namespace EndPoint.Controllers
             _bakBasketServiceQuery = bakeBasketServiceQuery;
         }
         [HttpPost("Add")]
-        public IActionResult Add(string productId, string userId)
+        public async Task<IActionResult> Add(string productId, string userId)
         {
-            var result = _basketService.AddToBasket(new BasketDTO()
+            var result =await _basketService.AddAsync(new BasketDTO()
             {
                 ProductID = Convert.ToInt32(productId),
                 UserID = Convert.ToInt32(userId)
@@ -30,9 +31,9 @@ namespace EndPoint.Controllers
             return Ok(result);
         }
         [HttpGet("GetAll")]
-        public IActionResult GetAll(string userId)
+        public async Task<IActionResult> GetAll(string userId)
         {
-            var result = _bakBasketServiceQuery.GetAll(new GetAllDTO() { UserId = Convert.ToInt32(userId) });
+            var result =await _bakBasketServiceQuery.GetAll(new GetAllDTO() { UserId = Convert.ToInt32(userId) });
             return Ok(result);
         }
     }
