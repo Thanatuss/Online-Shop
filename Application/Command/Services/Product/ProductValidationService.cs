@@ -29,7 +29,7 @@ namespace Application.Command.Services.Product
             var data = _queryDbContext.Products.Any(x => x.ProductId == deleteDTO.ProductId);
             return _queryDbContext.Products.SingleOrDefault(x => x.ProductId == deleteDTO.ProductId);
         }
-        public Domain.ProductEntity.Product IsExistAnyViaIdUpdate(UpdateDTO updateDTO)
+        public Domain.ProductEntity.Product IsExistAnyViaIdUpdate(ProductUpdateDTO updateDTO)
         {
             return _queryDbContext.Products.SingleOrDefault(x => x.ProductId == updateDTO.ProductId);
         }

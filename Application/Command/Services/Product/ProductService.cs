@@ -78,7 +78,7 @@ namespace Application.Command.Services.Product
         }
 
         // متد Update با محدودیت های مشابه
-        public async Task<OperationHandler> Update<T>(T dto) where T : UpdateDTO
+        public async Task<OperationHandler> Update<T>(T dto) where T : ProductUpdateDTO
         {
             var ProductQuery = _queryDbContext.Products.SingleOrDefault(x => x.ProductId == dto.ProductId);
             var ProductCommand = _commandDbContext.Products.SingleOrDefault(x => x.ProductId == dto.ProductId);

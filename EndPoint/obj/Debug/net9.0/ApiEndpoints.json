@@ -39,8 +39,8 @@
   {
     "ContainingType": "EndPoint.Controllers.CommentController",
     "Method": "Add",
-    "RelativePath": "api/Comment",
-    "HttpMethod": "",
+    "RelativePath": "api/Comment/Add",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -69,7 +69,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -107,24 +113,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "price",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Id",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "addDto",
+        "Type": "Application.Command.DTO.ProductDTO.AddDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -148,9 +139,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ProductId",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "deleteDto",
+        "Type": "Application.Command.DTO.ProductDTO.DeleteDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -164,60 +155,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ProductId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ProductName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Price",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "IsActive0Or1",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EndPoint.Controllers.UserController",
-    "Method": "Register",
-    "RelativePath": "api/User",
-    "HttpMethod": "",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "updateDto",
+        "Type": "Application.Command.DTO.ProductDTO.ProductUpdateDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -226,7 +166,7 @@
     "ContainingType": "EndPoint.Controllers.UserController",
     "Method": "GetAll",
     "RelativePath": "api/User/GetAll",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
@@ -234,21 +174,32 @@
   },
   {
     "ContainingType": "EndPoint.Controllers.UserController",
-    "Method": "RemoveAccount",
-    "RelativePath": "api/User/RemoveAccount",
+    "Method": "Register",
+    "RelativePath": "api/User/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
+        "Name": "signUpDto",
+        "Type": "Application.Command.DTO.User.SignUpDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EndPoint.Controllers.UserController",
+    "Method": "RemoveAccount",
+    "RelativePath": "api/User/RemoveAccount",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "removeAccountDto",
+        "Type": "Application.Command.DTO.User.RemoveAccountDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -262,24 +213,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "fullname",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "email",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "updateDto",
+        "Type": "Application.Command.DTO.User.UpdateDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

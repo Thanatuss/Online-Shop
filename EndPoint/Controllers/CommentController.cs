@@ -21,7 +21,8 @@ namespace EndPoint.Controllers
             _mediator = mediator;
         }
 
-        public async Task<IActionResult> Add(string text , string userId , string productId)
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add(string text, string userId, string productId)
         {
             var command = new AddCommentCommand(new AddCommentDTO()
             {
@@ -29,50 +30,35 @@ namespace EndPoint.Controllers
                 UserID = Convert.ToInt32(userId),
                 Text = text
             });
-            var result = _mediator.Send(command);
+            var result = await _mediator.Send(command);  // استفاده از await برای فراخوانی
             return Ok(result);
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string userId)
         {
-            var command = new ReadCommentCommand(new AddDTO()
-            {
+            var command = new ReadCommentCommand(new AddDTO() { });
 
-            });
-            var result =await _mediator.Send(command);
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
 
+
         [HttpPost("Update")]
-        public async Task<IActionResult> Update(string CommentId , string Text , string isDelete)
+        public async Task<IActionResult> Update(string CommentId, string Text, string isDelete)
         {
-            if (Convert.ToInt32(isDelete) == 0)
+            var isDeleteFlag = Convert.ToInt32(isDelete) == 0 ? false : true;
+
+            var command = new UpdateCommentCommand(new UpdateDTO()
             {
-                var command = new UpdateCommentCommand(new UpdateDTO()
-                {
-                    Text = Text,
-                    CommentId = Convert.ToInt32(CommentId),
+                Text = Text,
+                CommentId = Convert.ToInt32(CommentId),
+                IsDelete = isDeleteFlag
+            });
 
-                    IsDelete = false
-                });
-                var result = _mediator.Send(command);
-                return Ok(command);
-
-            }
-            else
-            {
-                var command = new UpdateCommentCommand(new UpdateDTO()
-                {
-                    Text = Text,
-                    CommentId = Convert.ToInt32(CommentId),
-
-                    IsDelete = true
-                });
-                var result = _mediator.Send(command);
-                return Ok(command);
-            }
-
+            var result = await _mediator.Send(command);  // استفاده از await برای فراخوانی
+            return Ok(result);
         }
+
     }
 }

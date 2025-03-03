@@ -1,6 +1,6 @@
 ﻿namespace Application.Command.DTO.ProductDTO;
 
-public class UpdateDTO
+public class ProductUpdateDTO
 {
     public int ProductId { get; set; }
     public string ProductName { get; set; }

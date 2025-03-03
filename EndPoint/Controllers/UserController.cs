@@ -6,7 +6,6 @@ using Domain.Entity;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 
 namespace EndPoint.Controllers
 {
@@ -17,107 +16,76 @@ namespace EndPoint.Controllers
         private readonly IUserService _userService;
         private readonly IUserServiceQuery _userServiceQuery;
         private readonly IMediator _mediator;
-        public UserController(IUserService userService, IUserServiceQuery userServiceQuery , IMediator mediator)
+
+        public UserController(IUserService userService, IUserServiceQuery userServiceQuery, IMediator mediator)
         {
-            _mediator = mediator; 
+            _mediator = mediator;
             _userService = userService;
             _userServiceQuery = userServiceQuery;
         }
 
-        public async Task<IActionResult> Register(string name, string username, string email, string password)
+        // ثبت‌نام کاربر
+        [HttpPost("Register")]
+        public async Task<ActionResult> Register([FromBody] SignUpDTO signUpDto)
         {
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(signUpDto.Fullname) || string.IsNullOrWhiteSpace(signUpDto.Username) ||
+                string.IsNullOrWhiteSpace(signUpDto.Email) || string.IsNullOrWhiteSpace(signUpDto.Password))
             {
-                return BadRequest("Informations can not be empty!");
+                return BadRequest("Informations cannot be empty!");
             }
 
-            var command = new RegisterProductCommand(new SignUpDTO()
-            {
-                Email = email,
-                Fullname = name,
-                Password = password,
-                Username = username
-            });
-            var result = await _mediator.Send(command)
-
-            /*var result = await _userService.Register(new Application.Command.DTO.User.SignUpDTO
-            {
-                Fullname = name,
-                Password = password,
-                Username = username,
-                Email = email
-            }*/
-            ;
-
-            if (result.Status == Status.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
-        [HttpPost("RemoveAccount")]
-        public async Task<IActionResult> RemoveAccount(string username, string password)
-        {
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            {
-                return BadRequest("Your username or password can not be empty!");
-            }
-
-            var Common = new DeleteUserCommand(new RemoveAccountDTO()
-            {
-                Password = password,
-                Username = username
-            });
-
-            var result = await _mediator.Send(Common);
-            if (result.Status == Status.Success)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result);
-            }
-
-        }
-
-        [HttpPost("GetAll")]
-        public IActionResult GetAll()
-        {
-            return Ok(_userServiceQuery.Read_GetAllUser());
-        }
-
-        [HttpPost("Update")]
-        public async Task<IActionResult> Update(string fullname, string username, string password, string email)
-        {
-            /*var result = await _userService.Update(new UpdateDTO()
-            {
-                Email = email,
-                Fullname = fullname,
-                Password = password,
-                Username = username
-            });*/
-
-            var command = new UpdateUserCommand(new UpdateDTO()
-            {
-                Password = password,
-                Email = email,
-                Fullname = fullname,
-                Username = username
-            });
-            /*if (result.Status == Status.Success)
-            {
-            }*/
+            var command = new RegisterProductCommand(signUpDto);
             var result = await _mediator.Send(command);
+
             if (result.Status == Status.Success)
             {
                 return Ok(result);
             }
 
             return BadRequest(result);
-
         }
 
+        // حذف حساب کاربری
+        [HttpDelete("RemoveAccount")]
+        public async Task<ActionResult> RemoveAccount([FromBody] RemoveAccountDTO removeAccountDto)
+        {
+            if (string.IsNullOrWhiteSpace(removeAccountDto.Username) || string.IsNullOrWhiteSpace(removeAccountDto.Password))
+            {
+                return BadRequest("Your username or password cannot be empty!");
+            }
+
+            var command = new DeleteUserCommand(removeAccountDto);
+            var result = await _mediator.Send(command);
+
+            if (result.Status == Status.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        // دریافت همه کاربران
+        [HttpGet("GetAll")]
+        public ActionResult GetAll()
+        {
+            var data = _userServiceQuery.Read_GetAllUser();
+            return Ok(data);
+        }
+
+        // بروزرسانی اطلاعات کاربری
+        [HttpPost("Update")]
+        public async Task<ActionResult> Update([FromBody] UpdateDTO updateDto)
+        {
+            var command = new UpdateUserCommand(updateDto);
+            var result = await _mediator.Send(command);
+
+            if (result.Status == Status.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
     }
 }

@@ -6,9 +6,9 @@ using Persistance.DBContext;
 
 public class UpdateProductCommand : IRequest<OperationHandler>
 {
-    public UpdateDTO UpdateDTO { get; set; }
+    public ProductUpdateDTO UpdateDTO { get; set; }
 
-    public UpdateProductCommand(UpdateDTO updateDto)
+    public UpdateProductCommand(ProductUpdateDTO updateDto)
     {
         UpdateDTO = updateDto;
     }

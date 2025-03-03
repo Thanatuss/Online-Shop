@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.Command.DTO.ProductDTO;
 using Application.Command.Services.Product;
-using Application.Command.Utilities;
 using Application.Query.Services.Product;
-using Domain.ProductEntity;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,81 +16,40 @@ namespace EndPoint.Controllers
         private readonly IProductServiceQuery _productServiceQuery;
         private readonly IMediator _mediator;
 
-        public ProductController(IProductService productService, IMediator mmediator, IProductServiceQuery productServiceQuery)
+        public ProductController(IProductService productService, IMediator mediator, IProductServiceQuery productServiceQuery)
         {
             _productService = productService;
             _productServiceQuery = productServiceQuery;
-            _mediator = mmediator; 
+            _mediator = mediator;
         }
+
+        // اکشن برای اضافه کردن محصول
         [HttpPost("Add")]
-        public async Task<IActionResult> Add(string name, string description, string price, string Id)
+        public async Task<IActionResult> Add([FromBody] AddDTO addDto)
         {
-            var command = new AddProductCommand(new AddDTO()
-            {
-                Description = description ,
-                Price = long.Parse(price),
-                ProductId = Convert.ToInt32(Id),
-                ProductName = name
-            });
-            var result = await _mediator.Send(command);
-            /* var result = _productService.Add(new AddDTO()
-            {
-                Description = Description,
-                Price = long.Parse(Price),
-                ProductId = Convert.ToInt32(ProductId),
-                ProductName = ProductName
-            }); */
+            var command = new AddProductCommand(addDto);
+            var result = await _mediator.Send(command); // استفاده از await
             return Ok(result);
-
         }
 
-
-
+        // اکشن برای حذف محصول
         [HttpPost("Remove")]
-        public async Task<IActionResult> Remove(string ProductId)
+        public async Task<IActionResult> Remove([FromBody] DeleteDTO deleteDto)
         {
-            var Command = new DeleteProductCommand(new DeleteDTO()
-            {
-                ProductId = Convert.ToInt32(ProductId)
-            });
-
-            var result = await _mediator.Send(Command);
+            var command = new DeleteProductCommand(deleteDto);
+            var result = await _mediator.Send(command); // استفاده از await
             return Ok(result);
         }
 
-
-
-
-
+        // اکشن برای بروزرسانی محصول
         [HttpPost("Update")]
-        public IActionResult Update(string ProductId, string ProductName, string Description, string Price, string IsActive0Or1)
+        public async Task<IActionResult> Update([FromBody] ProductUpdateDTO updateDto)
         {
-            bool isActive;
-            if (Convert.ToInt32(IsActive0Or1) == 0)
-            {
-                isActive = false;
-            }
-            else
-            {
-                isActive = true;
-            }
-            
-            var data = new UpdateProductCommand(new UpdateDTO(){
-                    Description = Description , 
-                    IsActive = isActive , 
-                    Price = long.Parse(Price),
-                    ProductId = Convert.ToInt32(ProductId),
-                    ProductName = ProductName
-
-            });
-            var result = _mediator.Send(data);
-
+            var result = await _mediator.Send(new UpdateProductCommand(updateDto)); // استفاده از await
             return Ok(result);
         }
 
-
-
-
+        // اکشن برای دریافت تمام محصولات
         [HttpGet("GetAll")]
         public IActionResult GetAll()
         {
