@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\query\\services\\basket\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\query\\services\\basket\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\basket\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\basket\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\basket\\ibasketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\basket\\ibasketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IBasketService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\IBasketService.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\Services\\Basket\\IBasketService.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\IBasketService.cs",
+              "RelativeToolTip": "Application\\Command\\Services\\Basket\\IBasketService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T08:58:57.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BasketService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\BasketService.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\Services\\Basket\\BasketService.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\BasketService.cs",
+              "RelativeToolTip": "Application\\Command\\Services\\Basket\\BasketService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAxwEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T08:35:06.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BasketService.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Basket\\BasketService.cs",
+              "RelativeDocumentMoniker": "Application\\Query\\Services\\Basket\\BasketService.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Query\\Services\\Basket\\BasketService.cs",
+              "RelativeToolTip": "Application\\Query\\Services\\Basket\\BasketService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T08:35:02.852Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "EndPoint.Controllers.BasketController",
+    "Method": "Add",
+    "RelativePath": "api/Basket/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EndPoint.Controllers.BasketController",
+    "Method": "GetAll",
+    "RelativePath": "api/Basket/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "EndPoint.Controllers.CommentController",
     "Method": "Add",
     "RelativePath": "api/Comment",

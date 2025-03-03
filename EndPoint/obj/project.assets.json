@@ -1720,7 +1720,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "MediatR": "12.4.1"
+          "MediatR": "12.4.1",
+          "StackExchange.Redis": "2.8.24"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
