@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Application.Command.DTO.User;
 using Application.Command.Utilities;
 using Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 using Persistance.DBContext;
 namespace Application.Command.Services.User
 {
@@ -18,8 +19,8 @@ namespace Application.Command.Services.User
         public List<Domain.Entity.User> Read_GetAllUser()
         {
             
-            List<Domain.Entity.User> GetAllUsers = _commandContext.Users.Where(x=>x.IsDeleted == false).ToList();
-            var test = "test";
+            List<Domain.Entity.User> GetAllUsers = _commandContext.Users.AsNoTracking().Where(x=>x.IsDeleted == false).ToList();
+
             return GetAllUsers;
         }
         // Login Area

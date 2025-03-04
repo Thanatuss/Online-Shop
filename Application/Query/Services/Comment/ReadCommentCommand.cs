@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Command.DTO.ProductDTO;
 using Domain.Comment;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistance.DBContext;
 
 namespace Application.Query.Services.Comment
@@ -33,7 +34,7 @@ namespace Application.Query.Services.Comment
 
         public async Task<List<ProductComment>> Handle(ReadCommentCommand request, CancellationToken cancellationToken)
         {
-            var list = _commandDb.ProductComments.Where(x => x.IsDeleted == false).ToList();
+            var list = _commandDb.ProductComments.AsNoTracking().Where(x => x.IsDeleted == false).ToList();
             return list;
         }
     }

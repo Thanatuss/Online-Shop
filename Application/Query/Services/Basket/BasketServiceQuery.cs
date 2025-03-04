@@ -1,5 +1,6 @@
 ﻿using Application.Query.DTO.Basket;
 using Application.Query.Services.Basket;
+using Microsoft.EntityFrameworkCore;
 using Persistance.DBContext;
 using StackExchange.Redis;
 
@@ -21,7 +22,7 @@ public class BasketServiceQuery : IBasketServiceQuery
     public async Task<string> GetAll(GetAllDTO getAllDto)
     {
         var db = GetRedisDatabase();
-        var user = _commandDb.Users.SingleOrDefault(x => x.Id == getAllDto.UserId);
+        var user = _commandDb.Users.AsNoTracking().SingleOrDefault(x => x.Id == getAllDto.UserId);
         if (user == null) return "کاربر یافت نشد";
 
         var userBasket = db.HashGetAll($"user:{user.Id}").ToList();
