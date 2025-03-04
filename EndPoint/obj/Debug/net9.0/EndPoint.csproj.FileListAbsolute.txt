@@ -168,3 +168,4 @@ C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\MediatR.Extensions.
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\HP\Desktop\OnlineProject2\EndPoint\bin\Debug\net9.0\FluentValidation.dll

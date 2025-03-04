@@ -11,6 +11,9 @@ using Application.Query.Services.Product;
 using Microsoft.AspNetCore.Hosting;
 using MediatR;
 using Microsoft.OpenApi.Models;
+using Application.Command.DTO.CommentDTO;
+using FluentValidation;
+using Application.Command.Services.FluentValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
@@ -38,6 +41,8 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Command"));
 });
+builder.Services.AddTransient<IValidator<AddCommentDTO>, AddCommentValidator>();
+builder.Services.AddTransient<IValidator<Application.Command.DTO.CommentDTO.UpdateDTO>, UpdateCommentValidator>();
 
 // ثبت سرویس‌ها
 builder.Services.AddScoped<IBasketServiceQuery, BasketServiceQuery>();
