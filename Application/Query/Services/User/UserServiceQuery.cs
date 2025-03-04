@@ -16,10 +16,10 @@ namespace Application.Command.Services.User
         private readonly QueryDBContext _queryContext = queryDBContext;    
         private readonly CommandDBContext _commandContext = commandDBContext;
 
-        public List<Domain.Entity.User> Read_GetAllUser()
+        public async Task<List<Domain.Entity.User>> Read_GetAllUser()
         {
             
-            List<Domain.Entity.User> GetAllUsers = _commandContext.Users.AsNoTracking().Where(x=>x.IsDeleted == false).ToList();
+            List<Domain.Entity.User> GetAllUsers =  _commandContext.Users.AsNoTracking().Where(x=>x.IsDeleted == false).ToList();
 
             return GetAllUsers;
         }

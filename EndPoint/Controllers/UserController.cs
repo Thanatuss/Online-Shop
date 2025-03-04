@@ -24,16 +24,9 @@ namespace EndPoint.Controllers
             _userServiceQuery = userServiceQuery;
         }
 
-        // ثبت‌نام کاربر
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] SignUpDTO signUpDto)
         {
-            if (string.IsNullOrWhiteSpace(signUpDto.Fullname) || string.IsNullOrWhiteSpace(signUpDto.Username) ||
-                string.IsNullOrWhiteSpace(signUpDto.Email) || string.IsNullOrWhiteSpace(signUpDto.Password))
-            {
-                return BadRequest("Informations cannot be empty!");
-            }
-
             var command = new RegisterProductCommand(signUpDto);
             var result = await _mediator.Send(command);
 
@@ -45,7 +38,6 @@ namespace EndPoint.Controllers
             return BadRequest(result);
         }
 
-        // حذف حساب کاربری
         [HttpDelete("RemoveAccount")]
         public async Task<ActionResult> RemoveAccount([FromBody] RemoveAccountDTO removeAccountDto)
         {
@@ -65,16 +57,15 @@ namespace EndPoint.Controllers
             return BadRequest(result);
         }
 
-        // دریافت همه کاربران
         [HttpGet("GetAll")]
-        public ActionResult GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            var data = _userServiceQuery.Read_GetAllUser();
+            var data = await _userServiceQuery.Read_GetAllUser();
             return Ok(data);
         }
 
         // بروزرسانی اطلاعات کاربری
-        [HttpPost("Update")]
+        [HttpPatch("Update")]
         public async Task<ActionResult> Update([FromBody] UpdateDTO updateDto)
         {
             var command = new UpdateUserCommand(updateDto);

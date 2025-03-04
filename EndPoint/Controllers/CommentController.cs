@@ -44,7 +44,7 @@ namespace EndPoint.Controllers
         }
 
 
-        [HttpPost("Update")]
+        [HttpPatch("Update")]
         public async Task<IActionResult> Update(string CommentId, string Text, string isDelete)
         {
             var isDeleteFlag = Convert.ToInt32(isDelete) == 0 ? false : true;

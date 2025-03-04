@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Application.Command.DTO.User;
 using Domain.Entity;
@@ -14,7 +15,7 @@ namespace Application.Command.Utilities
     {
         private readonly CommandDBContext _queryContext = queryDBContext;
 
-        public bool AreFieldsNotEmpty(SignUpDTO signUpDTO)
+        public async Task<bool> AreFieldsNotEmpty(SignUpDTO signUpDTO)
         {
              return !(string.IsNullOrWhiteSpace(signUpDTO.Fullname) ||
              string.IsNullOrWhiteSpace(signUpDTO.Username) ||
@@ -27,10 +28,10 @@ namespace Application.Command.Utilities
             var AnyUsername = await _queryContext.Users.AnyAsync(x => x.Username == signUpDTO.Username);
             return (AnyEmail || AnyUsername);
         }
-        public User FindUserViaUP(RemoveAccountDTO removeAccountDTO)
+        public async Task<User> FindUserViaUP(RemoveAccountDTO removeAccountDTO)
         {
-            var user = _queryContext.Users
-                .SingleOrDefault(x => x.Username == removeAccountDTO.Username && x.Password == removeAccountDTO.Password && x.IsDeleted == false);
+            var user = await _queryContext.Users
+                .SingleOrDefaultAsync(x => x.Username == removeAccountDTO.Username && x.Password == removeAccountDTO.Password && x.IsDeleted == false);
             return user; 
 
         }
@@ -41,6 +42,21 @@ namespace Application.Command.Utilities
             return user;
 
         }
+        public bool IsValidEmail(string email)
+        {
+            var emailRegex = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, emailRegex);
+        }
+        public bool IsValidUsername(string username)
+        {
+            return username.Length >= 3 && username.Length <= 20 && username.All(c => char.IsLetterOrDigit(c));
+        }
+        public bool IsValidPassword(string password)
+        {
+            var passwordRegex = @"^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.,^#])[A-Za-z\d@$!%*?&.,^#]{8,}$";
+            return Regex.IsMatch(password, passwordRegex);
+        }
+
 
     }
 }

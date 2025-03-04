@@ -32,24 +32,26 @@ namespace Application.Command.Services.User
 
         }
 
-        public async Task<OperationHandler> Handle(DeleteUserCommand request , CancellationToken cancellationToken)
+        public async Task<OperationHandler> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var DeleteDTO = request.RemoveAccountDTO;
+            var deleteDTO = request.RemoveAccountDTO;
 
+            var user = await _userValidationService.FindUserViaUP(deleteDTO);
 
-            var User = _userValidationService.FindUserViaUP(DeleteDTO);
-            var UserCommand = _commandContext.Users.SingleOrDefault(x =>
-                x.Username == DeleteDTO.Username && x.Password == DeleteDTO.Password && x.IsDeleted == false);
-
-            if (User != null)
+            if (user == null)
             {
-                
-                _commandContext.Users.Remove(UserCommand);
-                await _commandContext.SaveChangesAsync();
-                return OperationHandler.Success("Your account Removed successfully!");
+                return OperationHandler.NotFound("We could not find any account!");
             }
-            return OperationHandler.NotFound("We could not find any account!");
+
+            // اگر کاربر پیدا شد، حالت حذف نرم را اعمال می‌کنیم
+            user.IsDeleted = true;
+
+            // ذخیره تغییرات
+            await _commandContext.SaveChangesAsync(cancellationToken);
+
+            return OperationHandler.Success("Your account has been removed successfully!");
         }
+
     }
-    
+
 }

@@ -111,7 +111,7 @@
       }
     },
     "/api/Comment/Update": {
-      "post": {
+      "patch": {
         "tags": [
           "Comment"
         ],
@@ -177,7 +177,7 @@
       }
     },
     "/api/Product/Remove": {
-      "post": {
+      "delete": {
         "tags": [
           "Product"
         ],
@@ -208,7 +208,7 @@
       }
     },
     "/api/Product/Update": {
-      "post": {
+      "put": {
         "tags": [
           "Product"
         ],
@@ -325,7 +325,7 @@
       }
     },
     "/api/User/Update": {
-      "post": {
+      "patch": {
         "tags": [
           "User"
         ],

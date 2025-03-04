@@ -82,7 +82,7 @@
     "ContainingType": "EndPoint.Controllers.CommentController",
     "Method": "Update",
     "RelativePath": "api/Comment/Update",
-    "HttpMethod": "POST",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -134,7 +134,7 @@
     "ContainingType": "EndPoint.Controllers.ProductController",
     "Method": "Remove",
     "RelativePath": "api/Product/Remove",
-    "HttpMethod": "POST",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -150,7 +150,7 @@
     "ContainingType": "EndPoint.Controllers.ProductController",
     "Method": "Update",
     "RelativePath": "api/Product/Update",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -208,7 +208,7 @@
     "ContainingType": "EndPoint.Controllers.UserController",
     "Method": "Update",
     "RelativePath": "api/User/Update",
-    "HttpMethod": "POST",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [

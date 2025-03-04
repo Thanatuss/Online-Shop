@@ -33,7 +33,7 @@ namespace EndPoint.Controllers
         }
 
         // اکشن برای حذف محصول
-        [HttpPost("Remove")]
+        [HttpDelete("Remove")]
         public async Task<IActionResult> Remove([FromBody] DeleteDTO deleteDto)
         {
             var command = new DeleteProductCommand(deleteDto);
@@ -42,7 +42,7 @@ namespace EndPoint.Controllers
         }
 
         // اکشن برای بروزرسانی محصول
-        [HttpPost("Update")]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update([FromBody] ProductUpdateDTO updateDto)
         {
             var result = await _mediator.Send(new UpdateProductCommand(updateDto)); // استفاده از await

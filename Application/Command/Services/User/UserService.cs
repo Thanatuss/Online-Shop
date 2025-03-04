@@ -25,7 +25,7 @@ namespace Application.Command.Services.User
         
         public async Task<OperationHandler> Register(SignUpDTO signUpDTO)
         {
-            var areFiledsValid = _userValidationService.AreFieldsNotEmpty(signUpDTO);
+            var areFiledsValid = await _userValidationService.AreFieldsNotEmpty(signUpDTO);
             if (!areFiledsValid)
             {
                 return OperationHandler.Error("Your informations can not be empty!");
@@ -65,15 +65,15 @@ namespace Application.Command.Services.User
 
         public async Task<OperationHandler> DeleteAccount(RemoveAccountDTO removeAccountDTO)
         {
-            var User = _userValidationService.FindUserViaUP(removeAccountDTO);
-            if (User != null)
-            {
-                _commandContext.Users.Remove(User);
-                _queryContext.Users.Remove(User);
-                await _commandContext.SaveChangesAsync();
-                await _queryContext.SaveChangesAsync();
-                return OperationHandler.Success("Your account Removed successfully!");
-            }
+            //var User = _userValidationService.FindUserViaUP(removeAccountDTO);
+            //if (User != null)
+            //{
+            //    await _commandContext.Users.Remove(User);
+            //    await _queryContext.Users.Remove(User);
+            //    await _commandContext.SaveChangesAsync();
+            //    await _queryContext.SaveChangesAsync();
+            //    return OperationHandler.Success("Your account Removed successfully!");
+            //}
             return OperationHandler.NotFound("We could not find any account!");
         }
 

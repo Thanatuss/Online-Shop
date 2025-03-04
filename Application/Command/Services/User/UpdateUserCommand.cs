@@ -10,6 +10,7 @@ using MediatR;
 using Persistance.DBContext;
 using Application.Command.DTO.User;
 using UpdateDTO = Application.Command.DTO.User.UpdateDTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Command.Services.User
 {
@@ -33,35 +34,79 @@ namespace Application.Command.Services.User
             _commandContext = commandDBContext;
 
         }
-
         public async Task<OperationHandler> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var Updateuser = request.UpdateDTO;
-            var areFiledsValid = _userValidationService.AreFieldsNotEmpty(new SignUpDTO { Username = Updateuser.Username, Email = Updateuser.Email, Fullname = Updateuser.Fullname, Password = Updateuser.Password });
-            var User = await _userValidationService.FindUserViaEmail(Updateuser);
-            if (User != null)
+            var updateUser = request.UpdateDTO;
+            var isUsernameValid =  _userValidationService.IsValidUsername(updateUser.Username);
+            if (!isUsernameValid)
             {
-                var UserCommand =
-                    _commandContext.Users.SingleOrDefault(x => x.Email == Updateuser.Email && x.IsDeleted == false);
-                User.Fullname = Updateuser.Fullname;
-                User.Username = Updateuser.Username;
-                User.Password = Updateuser.Password;
-                UserCommand.Fullname = Updateuser.Fullname;
-                UserCommand.Username = Updateuser.Username;
-                UserCommand.Password = Updateuser.Password;
-                
-                await _commandContext.SaveChangesAsync();
+                return OperationHandler.Error("Username must be between 3 and 20 characters and contain only letters and numbers!");
+            }
+
+            //  اعتبارسنجی رمز عبور
+            var isPasswordValid = _userValidationService.IsValidPassword(updateUser.Password);
+            if (!isPasswordValid)
+            {
+                return OperationHandler.Error("Password must be at least 8 characters long and contain at least one uppercase letter, one number, and one special character!");
+            }
+
+
+            // بررسی اینکه فیلدهای ورودی پر شده باشند
+            var areFieldsValid = await _userValidationService.AreFieldsNotEmpty(new SignUpDTO
+            {
+                Username = updateUser.Username,
+                Email = updateUser.Email,
+                Fullname = updateUser.Fullname,
+                Password = updateUser.Password
+            });
+
+            if (!areFieldsValid)
+            {
                 return new OperationHandler()
                 {
-                    Message = "We updated your account successfully!",
-                    Status = Status.Success
+                    Message = "All fields must be filled!",
+                    Status = Status.Error
                 };
             }
+
+            // جستجوی کاربر بر اساس ایمیل
+            var user = await _userValidationService.FindUserViaEmail(updateUser);
+            if (user == null)
+            {
+                return new OperationHandler()
+                {
+                    Message = "We could not find the user to update!",
+                    Status = Status.Error
+                };
+            }
+
+            // جستجو برای یافتن کاربری که قرار است به‌روزرسانی شود
+            var userCommand = await _commandContext.Users
+                .SingleOrDefaultAsync(x => x.Email == updateUser.Email && x.IsDeleted == false, cancellationToken);
+
+            if (userCommand == null)
+            {
+                return new OperationHandler()
+                {
+                    Message = "User not found or account is deleted!",
+                    Status = Status.Error
+                };
+            }
+
+            // به‌روزرسانی اطلاعات کاربر
+            userCommand.Fullname = updateUser.Fullname;
+            userCommand.Username = updateUser.Username;
+            userCommand.Password = updateUser.Password;
+
+            // ذخیره تغییرات
+            await _commandContext.SaveChangesAsync(cancellationToken);
+
             return new OperationHandler()
             {
-                Message = "We could not update your account!",
-                Status = Status.Error
+                Message = "Your account has been updated successfully!",
+                Status = Status.Success
             };
         }
+
     }
 }
