@@ -47,6 +47,7 @@ builder.Services.AddScoped<IUserService,UserServic>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductServiceQuery, ProductServiceQuery>();
 builder.Services.AddScoped<ProductValidationService>();
+builder.Services.AddScoped<BasketValidations>();
 builder.Services.AddScoped<UserValidationService>();
 builder.Services.AddScoped<IUserServiceQuery, UserServiceQuery>();
 

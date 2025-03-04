@@ -60,6 +60,10 @@ namespace Application.Command.Services.User
                 Password = updateUser.Password
             });
 
+
+            
+
+
             if (!areFieldsValid)
             {
                 return new OperationHandler()

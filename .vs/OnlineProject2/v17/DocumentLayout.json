@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\user\\adduserproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\user\\adduserproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\user\\updateusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\user\\updateusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,32 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddUserProductCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\User\\AddUserProductCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\User\\AddUserProductCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\User\\AddUserProductCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\User\\AddUserProductCommand.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T07:14:51.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateUserCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\User\\UpdateUserCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\User\\UpdateUserCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\User\\UpdateUserCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\User\\UpdateUserCommand.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAcwCcAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T07:13:37.456Z",
-              "EditorCaption": ""
             }
           ]
         }

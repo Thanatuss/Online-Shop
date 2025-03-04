@@ -46,7 +46,7 @@ namespace EndPoint.Controllers
             {
                 UserId = Convert.ToInt32(userId)
             });
-            var result = _mediator.Send(command);
+            var result =await _mediator.Send(command);
             return Ok(result);
         }
     }

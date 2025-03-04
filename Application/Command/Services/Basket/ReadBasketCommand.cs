@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
 using Application.Command.Utilities;
@@ -26,12 +26,13 @@ namespace Application.Command.Services.Basket
     {
         private readonly CommandDBContext _commandDbContext;
         private static readonly ConnectionMultiplexer _redisConnection = ConnectionMultiplexer.Connect("127.0.0.1:6379");
+        private readonly BasketValidations _basketValidations;
 
-        public ReadBasketHandler(CommandDBContext commandDb)
+        public ReadBasketHandler(CommandDBContext commandDbContext , BasketValidations basketValidations)
         {
-            _commandDbContext = commandDb;
+            _commandDbContext = commandDbContext;
+            _basketValidations = basketValidations;
         }
-
         private IDatabase GetRedisDatabase()
         {
             return _redisConnection.GetDatabase();
@@ -41,23 +42,46 @@ namespace Application.Command.Services.Basket
         {
             var basketDto = request.GetAllDTO;
             var db = GetRedisDatabase();
-            var user = _commandDbContext.Users.SingleOrDefault(x => x.Id == basketDto.UserId);
-            if (user == null)
+            var userExists =await _basketValidations.IsUserExist(basketDto.UserId);
+            if (db == null)
+            {
+                return new OperationHandler { Message = "Failed to get Redis database." };
+            }
+            if (!userExists)
             {
                 return new OperationHandler
                 {
-                    Message = "کاربر یافت نشد"
+                    Message = "کاربری با این شناسه یافت نشد!"
                 };
             }
+            var redisKey = $"User-{basketDto.UserId}";
+            var allBasketItems = await db.HashGetAllAsync(redisKey);
+            if (allBasketItems == null)
+            {
+                return new OperationHandler { Message = "No basket items found in Redis." };
+            }
+            var basketDetails = allBasketItems.Select(item =>
+                new BasketItemDTO
+                {
+                    ProductID = item.Name,
+                    Quantity = item.Value
+                }).ToList();
+            if(basketDetails == null || !basketDetails.Any())
+            {
+                return new OperationHandler { Message = "سبد خرید خالی است." };
+            }
 
-            var userBasket = db.HashGetAll($"user:{user.Id}").ToList();
-            var itemDetails = userBasket.Select(item => $"{item.Name} ({item.Value})").ToList();
-            var result = string.Join(", ", itemDetails);
-
+            // بازگشت پیام موفقیت
             return new OperationHandler
             {
-                Message = result
+                Message = $"{basketDetails[0].ProductID} - {basketDetails[0].Quantity}"
             };
         }
+    }
+
+    public class BasketItemDTO
+    {
+        public string ProductID { get; set; }
+        public string Quantity { get; set; }
     }
 }
