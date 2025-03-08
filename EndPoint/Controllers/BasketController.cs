@@ -49,5 +49,12 @@ namespace EndPoint.Controllers
             var result =await _mediator.Send(command);
             return Ok(result);
         }
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(DeleteBasketDTO deleteBasket)
+        {
+            var command = new DeleteBasketCommand(new DeleteBasketDTO(){ProductID = deleteBasket.ProductID , UserID = deleteBasket.UserID});
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }

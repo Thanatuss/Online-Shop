@@ -3,24 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\category\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\category\\deletecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\basket\\removebasketcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\basket\\removebasketcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\category\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\category\\updatecategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\dto\\category\\deletecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\dto\\category\\deletecategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\dto\\basket\\deletebasketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\dto\\basket\\deletebasketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,88 +34,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
-              "RelativeDocumentMoniker": "EndPoint\\Program.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
-              "RelativeToolTip": "EndPoint\\Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAD0AAAAaAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "BasketController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\BasketController.cs",
+              "RelativeDocumentMoniker": "EndPoint\\Controllers\\BasketController.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\BasketController.cs",
+              "RelativeToolTip": "EndPoint\\Controllers\\BasketController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDQAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T08:10:34.698Z",
+              "WhenOpened": "2025-03-08T08:41:14.365Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "EndPoint\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "EndPoint\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAkwC0AAAAzAAAAAAAAAA==",
+              "Title": "DeleteBasketDTO.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\DTO\\Basket\\DeleteBasketDTO.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\DTO\\Basket\\DeleteBasketDTO.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\DTO\\Basket\\DeleteBasketDTO.cs",
+              "RelativeToolTip": "Application\\Command\\DTO\\Basket\\DeleteBasketDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T08:09:36.81Z",
+              "WhenOpened": "2025-03-08T08:40:23.662Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DeleteCategoryDTO.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\DTO\\Category\\DeleteCategoryDTO.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\DTO\\Category\\DeleteCategoryDTO.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\DTO\\Category\\DeleteCategoryDTO.cs",
-              "RelativeToolTip": "Application\\Command\\DTO\\Category\\DeleteCategoryDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "RemoveBasketCommand.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\RemoveBasketCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\Services\\Basket\\RemoveBasketCommand.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\RemoveBasketCommand.cs",
+              "RelativeToolTip": "Application\\Command\\Services\\Basket\\RemoveBasketCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T08:03:24.466Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DeleteCategoryCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\DeleteCategoryCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\Category\\DeleteCategoryCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\DeleteCategoryCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\Category\\DeleteCategoryCommand.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAABoAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T07:57:35.966Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "2094336d-c50d-4403-84d6-78ffc9961e3d",
-        "Display": 0,
-        "X": -111,
-        "Y": 370,
-        "Width": 970,
-        "Height": 979,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateCategoryCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\UpdateCategoryCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\Category\\UpdateCategoryCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\UpdateCategoryCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\Category\\UpdateCategoryCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T08:06:09.849Z",
+              "WhenOpened": "2025-03-08T08:37:57.549Z",
               "EditorCaption": ""
             }
           ]
