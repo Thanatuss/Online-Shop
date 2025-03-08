@@ -1,4 +1,5 @@
-﻿using Application.Command.DTO.Category;
+﻿using System.Threading.Tasks;
+using Application.Command.DTO.Category;
 using Application.Command.Services.Category;
 using Application.Query.DTO.CategoryQuery;
 using Application.Query.Services.Category;
@@ -25,10 +26,25 @@ namespace EndPoint.Controllers
             return Ok(result);
         }
         [HttpGet("GetAll")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
             var command = new ReadCategoryQueryCommand(new ReadCategoryDTOQuery { });
-            var result = _mediator.Send(command);
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpPatch("Update")]
+        public async Task<IActionResult> Update(CategoryUpdateDTO categoryUpdateDTO)
+        {
+            var command = new UpdateCategoryCommand(categoryUpdateDTO);
+            var result = await _mediator.Send(command).ConfigureAwait(false);
+            return Ok(result);
+        }
+
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(DeleteCategoryDTO deleteCategoryDTO)
+        {
+            var command = new DeleteCategoryCommand(deleteCategoryDTO);
+            var result = await _mediator.Send(command).ConfigureAwait(false);
             return Ok(result);
         }
     }

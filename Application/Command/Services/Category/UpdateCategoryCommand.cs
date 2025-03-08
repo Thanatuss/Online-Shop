@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Command.DTO.Category;
 using Application.Command.DTO.CommentDTO;
-using Application.Command.Services.Comment;
 using Application.Command.Utilities;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistance.DBContext;
 
 namespace Application.Command.Services.Category
 {
-    class UpdateCategoryCommand : IRequest<OperationHandler>
+    public class UpdateCategoryCommand : IRequest<OperationHandler>
     {
         public CategoryUpdateDTO CategoryUpdateDTO { get; set; }
-
         public UpdateCategoryCommand(CategoryUpdateDTO category)
         {
             CategoryUpdateDTO = category;
@@ -25,132 +23,53 @@ namespace Application.Command.Services.Category
     public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryCommand, OperationHandler>
     {
         private readonly CommandDBContext _commandDb;
-        private readonly IValidator<UpdateCategoryValidator> _validator;
+        private readonly IValidator<CategoryUpdateDTO> _validator;
 
-        public UpdateCategoryHandler(IValidator<UpdateCategoryValidator> validator, CommandDBContext commandDbContext)
+        public UpdateCategoryHandler(IValidator<CategoryUpdateDTO> validator, CommandDBContext command, QueryDBContext queryDb)
         {
-            _commandDb = commandDbContext;
+            _commandDb = command;
             _validator = validator;
         }
 
-        public async Task<OperationHandler> Handle(UpdateCommentCommand request, CancellationToken cancellationToken)
+        public async Task<OperationHandler> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var categoryDTO = request.UpdateDTO;
+            var categoryData = request.CategoryUpdateDTO;
+            var validation = _validator.Validate(categoryData);
 
-            // اعتبارسنجی داده‌ها
-            var validationResult = await _validator.ValidateAsync((IValidationContext)categoryDTO);
-            if (!validationResult.IsValid)
+            if (validation.IsValid)
             {
-                // اگر اعتبارسنجی شکست، خطا را بازگشت بدهید
-                return OperationHandler.Error("Validation failed: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
+                var data = await _commandDb.Categorys.SingleOrDefaultAsync(x => x.Id == categoryData.Id);
+                if (data != null)
+                {
+                    data.Name = categoryData.Name;
+                    data.Description = categoryData.Description;
+
+                    // Force EF to mark this entity as modified
+                    _commandDb.Entry(data).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    await _commandDb.SaveChangesAsync();
+
+                    return OperationHandler.Success("The information is saved!");
+                }
+                return OperationHandler.Error("Category not found!");
             }
-
-            // جستجو برای کامنت بر اساس ID
-            var category = _commandDb.Categorys.SingleOrDefault(x => x.Id == categoryDTO.);
-
-            // اگر کامنت یافت نشد
-            if (userCommand == null)
-            {
-                return OperationHandler.Error("Comment not found");
-            }
-
-            // بروزرسانی فیلدها
-            userCommand.Text = categoryDTO.Text;
-            userCommand.IsDeleted = categoryDTO.IsDelete;
-
-            // ذخیره تغییرات در پایگاه داده
-            await _commandDb.SaveChangesAsync();
-
-            // بازگشت موفقیت
-            return OperationHandler.Success("We updated your comment successfully!");
+            return OperationHandler.Error("Validation failed. The information is not saved!");
         }
     }
+
     public class UpdateCategoryValidator : AbstractValidator<CategoryUpdateDTO>
     {
         public UpdateCategoryValidator()
         {
+            RuleFor(x => x.Id)
+                .GreaterThan(0).WithMessage("Your Id must bigger than 0"!)
+                .NotEmpty().WithMessage("Your id can not be empty!");
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Category name is required!")
-                .MinimumLength(3).WithMessage("at least category name must has 3 characters");
+                .NotEmpty().WithMessage("Your name can not be empty!")
+                .MinimumLength(3).WithMessage("Your name must be at least 3 charactors!");
 
             RuleFor(x => x.Description)
-                .NotEmpty().WithMessage("Description name is required!")
-                .MinimumLength(5).WithMessage("at least category Description must has 5 characters");
-
-            RuleFor(x => x.ParentId)
-                .NotEmpty().WithMessage("Comment text cannot be empty.")
-                
+                .NotEmpty().WithMessage("Your Description can not be empty!")
+                .MinimumLength(10).WithMessage("Your Description must be at least 10 charactors!");
         }
     }
-
 }
-/*
- *using System;
-   using System.Linq;
-   using System.Threading;
-   using System.Threading.Tasks;
-   using Application.Command.DTO.CommentDTO;
-   using Application.Command.Utilities;
-   using FluentValidation;
-   using MediatR;
-   using Persistance.DBContext;
-   
-   namespace Application.Command.Services.Comment
-   {
-       public class UpdateCommentCommand : IRequest<OperationHandler>
-       {
-           public UpdateDTO UpdateDTO { get; set; }
-   
-           public UpdateCommentCommand(UpdateDTO updateDto)
-           {
-               UpdateDTO = updateDto;
-           }
-       }
-   
-       public class UpdateCommentHandler : IRequestHandler<UpdateCommentCommand, OperationHandler>
-       {
-           private readonly CommandDBContext _commandDb;
-           private readonly IValidator<UpdateDTO> _validator;
-   
-           public UpdateCommentHandler(IValidator<UpdateDTO> validator, CommandDBContext commandDbContext)
-           {
-               _commandDb = commandDbContext;
-               _validator = validator;
-           }
-   
-           public async Task<OperationHandler> Handle(UpdateCommentCommand request, CancellationToken cancellationToken)
-           {
-               var updateDTO = request.UpdateDTO;
-   
-               // اعتبارسنجی داده‌ها
-               var validationResult = await _validator.ValidateAsync(updateDTO);
-               if (!validationResult.IsValid)
-               {
-                   // اگر اعتبارسنجی شکست، خطا را بازگشت بدهید
-                   return OperationHandler.Error("Validation failed: " + string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage)));
-               }
-   
-               // جستجو برای کامنت بر اساس ID
-               var userCommand = _commandDb.ProductComments.SingleOrDefault(x => x.Id == updateDTO.CommentId);
-   
-               // اگر کامنت یافت نشد
-               if (userCommand == null)
-               {
-                   return OperationHandler.Error("Comment not found");
-               }
-   
-               // بروزرسانی فیلدها
-               userCommand.Text = updateDTO.Text;
-               userCommand.IsDeleted = updateDTO.IsDelete;
-   
-               // ذخیره تغییرات در پایگاه داده
-               await _commandDb.SaveChangesAsync();
-   
-               // بازگشت موفقیت
-               return OperationHandler.Success("We updated your comment successfully!");
-           }
-       }
-   }
-   
- *
- */

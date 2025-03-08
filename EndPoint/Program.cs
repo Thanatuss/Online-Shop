@@ -14,6 +14,8 @@ using Microsoft.OpenApi.Models;
 using Application.Command.DTO.CommentDTO;
 using FluentValidation;
 using Application.Command.Services.FluentValidator;
+using Application.Command.DTO.Category;
+using Application.Command.Services.Category;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
@@ -43,6 +45,7 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
 });
 builder.Services.AddTransient<IValidator<AddCommentDTO>, AddCommentValidator>();
 builder.Services.AddTransient<IValidator<Application.Command.DTO.CommentDTO.UpdateDTO>, UpdateCommentValidator>();
+builder.Services.AddTransient<IValidator<CategoryUpdateDTO>, UpdateCategoryValidator>();
 
 // ثبت سرویس‌ها
 builder.Services.AddScoped<IBasketServiceQuery, BasketServiceQuery>();

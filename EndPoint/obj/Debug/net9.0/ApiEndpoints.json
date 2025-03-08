@@ -54,12 +54,44 @@
   },
   {
     "ContainingType": "EndPoint.Controllers.CategoryController",
+    "Method": "Delete",
+    "RelativePath": "api/Category/Delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deleteCategoryDTO",
+        "Type": "Application.Command.DTO.Category.DeleteCategoryDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EndPoint.Controllers.CategoryController",
     "Method": "GetAll",
     "RelativePath": "api/Category/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EndPoint.Controllers.CategoryController",
+    "Method": "Update",
+    "RelativePath": "api/Category/Update",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryUpdateDTO",
+        "Type": "Application.Command.DTO.Category.CategoryUpdateDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
