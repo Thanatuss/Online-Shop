@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
 using Application.Command.DTO.ProductDTO;
+using Application.Command.Services.Basket.Repo;
 using Application.Command.Services.Product;
 using Application.Command.Utilities;
 using Domain.ProductEntity;
@@ -27,12 +28,13 @@ namespace Application.Command.Services.Basket
 
     public class AddBasketHandler : IRequestHandler<AddBasketCommand, OperationHandler>
     {
-        private readonly CommandDBContext _commandDbContext;
         private static readonly ConnectionMultiplexer _redisConnection = ConnectionMultiplexer.Connect("127.0.0.1:6379");
         private readonly BasketValidations _basketValidations;
-        public AddBasketHandler(CommandDBContext commandDb, BasketValidations basketValidations)
+        private readonly IRedisRepo _redis;
+
+        public AddBasketHandler(IRedisRepo reids ,  BasketValidations basketValidations)
         {
-            _commandDbContext = commandDb;
+            _redis = reids;
             _basketValidations = basketValidations;
         }
         private IDatabase GetRedisDatabase()
@@ -69,7 +71,7 @@ namespace Application.Command.Services.Basket
                 }
 
                 // 3. بررسی Redis و اضافه کردن محصول به سبد خرید
-                var db = GetRedisDatabase();
+                var db = _redis.Connection();
                 var redisKey = $"User-{basketDto.UserID}";
                 var productField = $"Product-{basketDto.ProductID}";
                 var existingQuantity = await db.HashGetAsync(redisKey, productField);

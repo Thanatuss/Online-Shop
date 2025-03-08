@@ -15,6 +15,7 @@ using Application.Command.DTO.CommentDTO;
 using FluentValidation;
 using Application.Command.Services.FluentValidator;
 using Application.Command.DTO.Category;
+using Application.Command.Services.Basket.Repo;
 using Application.Command.Services.Category;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +49,7 @@ builder.Services.AddTransient<IValidator<Application.Command.DTO.CommentDTO.Upda
 builder.Services.AddTransient<IValidator<CategoryUpdateDTO>, UpdateCategoryValidator>();
 
 // ثبت سرویس‌ها
+builder.Services.AddScoped<IRedisRepo, RedisRepo>();
 builder.Services.AddScoped<IBasketServiceQuery, BasketServiceQuery>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<AddProductHandler>());
 builder.Services.AddScoped<IBasketService, BasketService>();

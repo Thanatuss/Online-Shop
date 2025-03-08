@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
+using Application.Command.Services.Basket.Repo;
 using Application.Command.Utilities;
 using Application.Query.DTO.Basket;
 using MediatR;
@@ -27,11 +28,14 @@ namespace Application.Command.Services.Basket
         private readonly CommandDBContext _commandDbContext;
         private static readonly ConnectionMultiplexer _redisConnection = ConnectionMultiplexer.Connect("127.0.0.1:6379");
         private readonly BasketValidations _basketValidations;
+        private readonly IRedisRepo _redis; 
 
-        public ReadBasketHandler(CommandDBContext commandDbContext , BasketValidations basketValidations)
+        public ReadBasketHandler(IRedisRepo redis ,  CommandDBContext commandDbContext , BasketValidations basketValidations)
         {
             _commandDbContext = commandDbContext;
             _basketValidations = basketValidations;
+            _redis = redis;
+
         }
         private IDatabase GetRedisDatabase()
         {
@@ -41,7 +45,7 @@ namespace Application.Command.Services.Basket
         public async Task<OperationHandler> Handle(ReadBasketCommand request, CancellationToken cancellationToken)
         {
             var basketDto = request.GetAllDTO;
-            var db = GetRedisDatabase();
+            var db = _redis.Connection();
             var userExists =await _basketValidations.IsUserExist(basketDto.UserId);
             if (db == null)
             {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
+using Application.Command.Services.Basket.Repo;
 using Application.Command.Utilities;
 using MediatR;
 using Persistance.DBContext;
@@ -25,11 +26,13 @@ namespace Application.Command.Services.Basket
         private readonly CommandDBContext _commandDbContext;
         private static readonly ConnectionMultiplexer _redisConnection = ConnectionMultiplexer.Connect("127.0.0.1:6379");
         private readonly BasketValidations _basketValidations;
+        private readonly IRedisRepo _redis;
 
-        public DeleteBasketHandler(CommandDBContext commandDb, BasketValidations basketValidations)
+        public DeleteBasketHandler(IRedisRepo redis , CommandDBContext commandDb, BasketValidations basketValidations)
         {
             _commandDbContext = commandDb;
             _basketValidations = basketValidations;
+            _redis = redis;
         }
 
         private IDatabase GetRedisDatabase()
@@ -67,7 +70,7 @@ namespace Application.Command.Services.Basket
                 }
 
                 // 3. بررسی Redis و حذف محصول از سبد خرید
-                var db = GetRedisDatabase();
+                var db = _redis.Connection();
                 var redisKey = $"User-{basketDto.UserID}";
                 var productField = $"Product-{basketDto.ProductID}";
 
