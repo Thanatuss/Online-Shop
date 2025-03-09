@@ -530,6 +530,10 @@
           "price": {
             "type": "integer",
             "format": "int64"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

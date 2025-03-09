@@ -13,5 +13,6 @@ namespace Application.Command.DTO.ProductDTO
             public string ProductName { get; set; }
             public string Description { get; set; }
             public long Price { get; set; }
+            public int CategoryId { get; set; }
     }
 }

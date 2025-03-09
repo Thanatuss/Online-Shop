@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\Desktop\\OnlineProject2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\category\\addcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\category\\addcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\product\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\product\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\basket\\addbasketcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\basket\\addbasketcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|c:\\users\\hp\\desktop\\onlineproject2\\endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09909965-8CC7-45F4-906A-C760106BB2D2}|EndPoint\\EndPoint.csproj|solutionrelative:endpoint\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|c:\\users\\hp\\desktop\\onlineproject2\\application\\command\\services\\product\\addproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8B8ADDF-EB0E-462E-8C9C-7748E1298452}|Application\\Application.csproj|solutionrelative:application\\command\\services\\product\\addproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,40 +22,74 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddCategoryCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\AddCategoryCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\Category\\AddCategoryCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Category\\AddCategoryCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\Category\\AddCategoryCommand.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T10:14:06.652Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddProductCommand.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Product\\AddProductCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\Services\\Product\\AddProductCommand.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Product\\AddProductCommand.cs",
+              "RelativeToolTip": "Application\\Command\\Services\\Product\\AddProductCommand.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAiwIYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T07:04:46.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateProductCommand.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Product\\UpdateProductCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Command\\Services\\Product\\UpdateProductCommand.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Product\\UpdateProductCommand.cs",
+              "RelativeToolTip": "Application\\Command\\Services\\Product\\UpdateProductCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-09T06:54:23.826Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "19d85d03-3724-44b3-9e7f-f5663e61f793",
+        "Display": 0,
+        "X": 1561,
+        "Y": 372,
+        "Width": 970,
+        "Height": 979,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AddBasketCommand.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\AddBasketCommand.cs",
-              "RelativeDocumentMoniker": "Application\\Command\\Services\\Basket\\AddBasketCommand.cs",
-              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\Application\\Command\\Services\\Basket\\AddBasketCommand.cs",
-              "RelativeToolTip": "Application\\Command\\Services\\Basket\\AddBasketCommand.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAiwEkAAAAtAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
+              "RelativeDocumentMoniker": "EndPoint\\Program.cs",
+              "ToolTip": "C:\\Users\\HP\\Desktop\\OnlineProject2\\EndPoint\\Program.cs",
+              "RelativeToolTip": "EndPoint\\Program.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAjwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T10:11:08.901Z",
+              "WhenOpened": "2025-03-09T06:26:29.257Z",
               "EditorCaption": ""
             }
           ]

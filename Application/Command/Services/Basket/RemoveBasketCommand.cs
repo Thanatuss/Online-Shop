@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Command.DTO.Basket;
 using Application.Command.Services.Basket.Repo;
 using Application.Command.Utilities;
+using Domain.Entity;
 using MediatR;
 using Persistance.DBContext;
 using StackExchange.Redis;
@@ -33,6 +34,7 @@ namespace Application.Command.Services.Basket
             _commandDbContext = commandDb;
             _basketValidations = basketValidations;
             _redis = redis;
+
         }
 
         private IDatabase GetRedisDatabase()
@@ -49,6 +51,7 @@ namespace Application.Command.Services.Basket
             {
                 return OperationHandler.Error("UserID باید بزرگتر از صفر باشد.");
             }
+
             if (basketDto.ProductID <= 0)
             {
                 return OperationHandler.Error("ProductID باید بزرگتر از صفر باشد.");
@@ -104,4 +107,4 @@ namespace Application.Command.Services.Basket
             }
         }
     }
-}
+    }

@@ -17,6 +17,9 @@ using Application.Command.Services.FluentValidator;
 using Application.Command.DTO.Category;
 using Application.Command.Services.Basket.Repo;
 using Application.Command.Services.Category;
+using Application.Command.DTO.ProductDTO;
+using static Application.Command.Services.Product.DeleteProductHandler;
+using static UpdateProductHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
@@ -47,6 +50,9 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
 builder.Services.AddTransient<IValidator<AddCommentDTO>, AddCommentValidator>();
 builder.Services.AddTransient<IValidator<Application.Command.DTO.CommentDTO.UpdateDTO>, UpdateCommentValidator>();
 builder.Services.AddTransient<IValidator<CategoryUpdateDTO>, UpdateCategoryValidator>();
+builder.Services.AddTransient<IValidator<AddDTO>, AddProductValidator>();
+builder.Services.AddTransient<IValidator<DeleteDTO>, DeleteProductValidator>();
+builder.Services.AddTransient<IValidator<ProductUpdateDTO>, UpdateProductValidator>();
 
 // ثبت سرویس‌ها
 builder.Services.AddScoped<IRedisRepo, RedisRepo>();
@@ -60,7 +66,6 @@ builder.Services.AddScoped<ProductValidationService>();
 builder.Services.AddScoped<BasketValidations>();
 builder.Services.AddScoped<UserValidationService>();
 builder.Services.AddScoped<IUserServiceQuery, UserServiceQuery>();
-
 var app = builder.Build();
 
 // فعال کردن Swagger فقط در محیط توسعه (Development)

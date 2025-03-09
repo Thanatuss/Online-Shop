@@ -10,12 +10,12 @@ using Persistance.DBContext;
 
 namespace Application.Query.Services.Product
 {
-    public class ProductServiceQuery(QueryDBContext  queryDbContext) : IProductServiceQuery
+    public class ProductServiceQuery(CommandDBContext queryDbContext) : IProductServiceQuery
     {
-        private readonly QueryDBContext _queryDBContext = queryDbContext;
+        private readonly CommandDBContext _commandDBContext = queryDbContext;
         List<Domain.ProductEntity.Product> IProductServiceQuery.GetAll()
         {
-            return _queryDBContext.Products.AsNoTracking().ToList();
+            return _commandDBContext.Products.AsNoTracking().ToList();
         }
     }
 }
